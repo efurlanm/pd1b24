@@ -1,6 +1,6 @@
 # PINN Discovery 1D Burgers 2024 (PD1B24)
 
-*Last edited: 2024-05-17*
+*Last edited: 2024-05-19*
 
 This repository contains the code, data, manuscript, and other files used in the research entitled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*. The description of some files used are below:
 
