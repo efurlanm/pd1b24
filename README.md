@@ -12,6 +12,6 @@ This repository contains the code, data, manuscript, and other files used in the
 
 * `Burgers-1D-Exact-Solution.ipynb` - 1D Burgers Exact Solution using the Gaussian Quadrature Method (GQM)
 
-* `*-environment.txt` - spec files for the purpose of recreating a Conda environment identical to the one used in the experiments (<https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>).
+* `*-environment.txt` - spec files for the purpose of recreating a [Conda environment](<https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>) identical to the one used in the experiments.
 
 This repository contains some parts adapted from the work of Raissi et al. (2019) <https://github.com/maziarraissi/PINNs/>, and also from the PySINDy examples <https://pysindy.readthedocs.io/>.
