@@ -18,11 +18,11 @@ Description of some files and directories:
 
 * [1D_Burgers_Data_Driven_Parameter_Discovery.odp](1D_Burgers_Data_Driven_Parameter_Discovery.odp) - Presentation
 
-* [Manuscript-1](Manuscript-1) - Qualification Exam LaTeX sources
+* [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources
 
 * [ukk23](ukk23) - Research on the use of PINN in gas optics (RRTMGP-NN) of the ecRad radiation scheme.
 
-* [Manuscript-2](Manuscript-1) - Thesis Proposal Examination LaTeX sources
+* [manuscript-2](manuscript-1) - Thesis Proposal Examination LaTeX sources
 
 This work contains some parts adapted from the work of:
 
