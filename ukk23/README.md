@@ -30,7 +30,7 @@ Based on several sources, including:
 
 ## CODE AND DATA
 
-The code and data come from various sources, such as:
+Code and data from other sources, due to size, are not present in this sub-repo, and must be obtained and installed:
 
 - <https://zenodo.org/records/7413935>
 - <https://zenodo.org/records/4030436>
