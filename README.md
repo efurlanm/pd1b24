@@ -2,7 +2,9 @@
 
 *Last edited: 2024-07-29*
 
-This repository contains the code, data, manuscript, and other files used in the research entitled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*. It is a work in progress and subject to constant change.
+This repository contains the code, data, manuscript, and other files used in the research titled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*. It also includes a research to use neural network in the optical radiation module of atmospheric model.
+
+It is a work in progress and subject to constant changes.
 
 Description of some files and directories:
 
