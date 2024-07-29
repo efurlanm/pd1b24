@@ -2,7 +2,7 @@
 
 *Last edited: 2024-07-29*
 
-This repository contains the code, data, manuscript, and other files used in the research titled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*. It also includes a research to use neural network in the optical radiation module of atmospheric model.
+This repository contains the code, data, manuscript, and other files used in the research titled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*. It also includes a research to use neural network in atmospheric weather and climate models.
 
 It is a work in progress and subject to constant changes.
 
@@ -22,7 +22,7 @@ Description of some files and directories:
 
 * [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources
 
-* [ukk23](ukk23) - Research on the use of PINN in gas optics (RRTMGP-NN) of the ecRad radiation scheme.
+* [ukk23](ukk23) - Notes and research on the use of PINN in gas optics radiation scheme.
 
 * [manuscript-2](manuscript-1) - Thesis Proposal Examination LaTeX sources
 

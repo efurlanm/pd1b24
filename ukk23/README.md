@@ -1,6 +1,6 @@
 # Ukk23
 
-This subrepository contains my notes on the RTE+RRTMGP-PINN research. The initial idea was to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with PINN. It is a work in progress and subject to constant change.
+This subrepository contains my research and notes on the PINN radiation scheme suitable for use in atmospheric weather and climate models. The initial idea was to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with PINN. It is a work in progress and subject to constant change.
 
 Based on several sources, including:
 
