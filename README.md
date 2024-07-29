@@ -2,7 +2,9 @@
 
 *Last edited: 2024-06-09*
 
-This repository contains the code, data, manuscript, and other files used in the research entitled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*. The description of some files used are below:
+This repository contains the code, data, manuscript, and other files used in the research entitled *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*.
+
+Description of some files and directories:
 
 * [Burgers-1D-Discovery-Numerical.ipynb](Burgers-1D-Discovery-Numerical.ipynb) - 1D Burgers Data-Driven Parameter Discovery using PySINDy. Used in the first part of the work to compare the PINN and NM methods.
 
@@ -22,4 +24,9 @@ This repository contains the code, data, manuscript, and other files used in the
 
 * [Manuscript-2](Manuscript-1) - Thesis Proposal Examination LaTeX sources
 
-This work contains some parts adapted from the work of Raissi et al. (2019) <https://github.com/maziarraissi/PINNs/>, and also from the PySINDy examples <https://pysindy.readthedocs.io/>.
+This work contains some parts adapted from the work of:
+
+- Raissi et al. <https://github.com/maziarraissi/PINNs/>
+- PySINDy. <https://pysindy.readthedocs.io/>
+- Ukkonen et al. <https://github.com/peterukk/>
+- And others.
