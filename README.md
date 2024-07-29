@@ -12,10 +12,14 @@ This repository contains the code, data, manuscript, and other files used in the
 
 * [Burgers-1D-Exact-Solution.ipynb](Burgers-1D-Exact-Solution.ipynb) - 1D Burgers Exact Solution using the Gaussian Quadrature Method (GQM)
 
-* `*-environment.txt` - spec files for the purpose of recreating a [Conda environment](<https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>) identical to the one used in the experiments.
+* `*-environment.txt` - spec files for the purpose of recreating a [Conda environment](<https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>) identical to the one used in the experiments. The environment name used in Notebooks is "tf1".
 
 * [1D_Burgers_Data_Driven_Parameter_Discovery.odp](1D_Burgers_Data_Driven_Parameter_Discovery.odp) - Presentation
 
-* [LaTeX](LaTeX) - Manuscript LaTeX sources
+* [Manuscript-1](Manuscript-1) - Qualification Exam LaTeX sources
+
+* [ukk23](ukk23) - Research on the use of PINN in gas optics (RRTMGP-NN) of the ecRad radiation scheme.
+
+* [Manuscript-2](Manuscript-1) - Thesis Proposal Examination LaTeX sources
 
 This work contains some parts adapted from the work of Raissi et al. (2019) <https://github.com/maziarraissi/PINNs/>, and also from the PySINDy examples <https://pysindy.readthedocs.io/>.
