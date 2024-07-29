@@ -22,7 +22,9 @@ Description of some files and directories:
 
 * [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources
 
-* [ukk23](ukk23) - Notes and research on the use of PINN in gas optics radiation scheme.
+* [ukk23](ukk23) - Notes on the use of PINN in gas optics radiation scheme
+
+* [ktuner](ktuner) - Notes on using Keras Tuner
 
 * [manuscript-2](manuscript-1) - Thesis Proposal Examination LaTeX sources
 
