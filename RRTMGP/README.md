@@ -1,36 +1,40 @@
-# Ukk23
+# RRTMGP
 
-This subrepository contains my research and notes on the PINN radiation scheme suitable for use in atmospheric weather and climate models. The initial idea was to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with PINN. It is a work in progress and subject to constant change.
-
-Based on:
+This subrepository contains my research and experiment notes on the radiation scheme for use in weather and climate models. The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model, based on:
 
 - Ukkonen, P., & Hogan, R. J. (2023). Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0. Geoscientific Model Development, 16(11), 3241–3261. <https://doi.org/10.5194/gmd-16-3241-2023>
 
+## Notebooks
 
+- [ukk23test01-train-r2.ipynb](ukk23test01-train-r2.ipynb) : continuation of `ukk23test01-train.ipynb`, adding more documentation, better organization, complete training, etc.
 
-## NOTEBOOKS
+- [ukk23test01-train.ipynb](ukk23test01-train.ipynb) : generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow and Python, and Fortran routines are used to generate the training data set. The idea is to replace the RRTMGP lookup tables with NN.
 
-- **`ukk23test01-train.ipynb`**: generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow and Python, and Fortran routines are used to generate the training data set. The idea is to replace the RRTMGP lookup tables with NN.
+- [ecrad01-gprof.ipynb](ecrad01-gprof.ipynb) : gprof of ecrad executable from ecrad dir.
 
-- **`ukk23test01-rfmip-clear-sky.ipynb`**: runs the RFMIP-CLEAR-SKY example.
+- [ukk23eo01-gprof.ipynb](ukk23eo01-gprof.ipynb) : gprof of ecrad executable from ukk23eo01 dir.
 
-- **`ecrad01-gprof.ipynb`**: gprof of ecrad executable from ecrad dir.
+- [ukk23test01-rfmip-clear-sky.ipynb](ukk23test01-rfmip-clear-sky.ipynb) : runs the RFMIP-CLEAR-SKY example.
 
-- **`ukk23eo01-gprof.ipynb`**:  gprof of ecrad executable from ukk23eo01 dir.
+- [ecrad-01-sd-r240823.ipynb](ecrad-01-sd-r240823.ipynb) : shows the original ecRad radiation module using conventional numerical method, running on SDumont.
 
+- [ukk23test01-train-sd-r240823.ipynb](ukk23test01-train-sd-r240823.ipynb) [work in progress] : DNN network training for the optical gas radiation problem, running on SDumont.
 
-## DIRECTORIES
+## Files
 
-- **`ukk23test01`**: based on <https://zenodo.org/records/7413935> [3]
+- [ecRad radiation scheme User Guide - Hogan 2022.md](ecRad radiation scheme User Guide - Hogan 2022.md) : original document converted from PDF to Markdown.
 
-- **`ukk23eo01`**: based on <https://github.com/peterukk/ecrad-opt>
+## Subdirectories
 
-- **`ecrad`**: based on <https://github.com/ecmwf-ifs/ecrad>
+- [ukk23test01](ukk23test01) : based on <https://zenodo.org/records/7413935> [3]
 
+- [ukk23eo01](ukk23eo01) : based on <https://github.com/peterukk/ecrad-opt>
 
-## CODE AND DATA
+- [ecrad](ecrad) : based on <https://github.com/ecmwf-ifs/ecrad>
 
-Code and data from other sources, due to size, are not present in this sub-repo, and must be obtained and installed:
+## Code and data
+
+Due to size restrictions, the data is not present in this repository and must be obtained and installed from several sources:
 
 - <https://zenodo.org/records/7413935>
 - <https://zenodo.org/records/4030436>
@@ -44,7 +48,7 @@ The RTE+RRTMGP-NN is available on GitHub:
 
 - <https://github.com/peterukk/rte-rrtmgp-nn> (last access: 8 June 2023)
 - <https://doi.org/10.5281/zenodo.7413935> (Ukkonen, 2022c) [1]
-    - <https://zenodo.org/records/7413935> [code]
+  - <https://zenodo.org/records/7413935> [code]
 
 The Fortran programs and Python scripts used for data generation and model training are found in the subdirectory
 
@@ -53,20 +57,18 @@ The Fortran programs and Python scripts used for data generation and model train
 The training data and archived version of RTE+RRTMGP-NN 2.0 with its training scripts can be accessed at
 
 - <https://doi.org/10.5281/zenodo.6576680> (Ukkonen, 2022d) [2]
-    - <https://zenodo.org/records/7413952> [code and data set]
+  - <https://zenodo.org/records/7413952> [code and data set]
 
 The optimized version of the ecRad radiation scheme integrated with RRTMGP-NN 2.0 can be accessed at
 
 - <https://doi.org/10.5281/zenodo.7148329> (Ukkonen, 2022e) [3]
-    - <https://zenodo.org/records/7852526> [code]
+  - <https://zenodo.org/records/7852526> [code]
 
-
-## NOTES
+## Notes
 
 - The "*.nc" files are from NetCDF4 and their structure can be viewed using the [ToolsUI](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/reading_cdm.html).
 
-
-## REFERENCES
+## References
 
 [1] Ukkonen, P., Pincus, R., Hillman, B. R., Norman, M., fomics, & Heerwaarden, C. van. (2022c). peterukk/rte-rrtmgp-nn: 2.0 (2.0) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.7413935>
 

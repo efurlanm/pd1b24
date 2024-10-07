@@ -10,17 +10,17 @@ This repository contains code, data, manuscripts, and other files used in my res
 
 The acronym PD1B24 originally comes from the first studies entitled *PINN Discovery 1D Burgers 2024*.
 
-This repository is a work in progress and is subject to constant change.
+The idea of ​​this repo is to be a place for controlled experiments of new ideas and theories that emerge over time, evaluation of results, direct observation of implementations, review, correction, curiosities, and learning from mistakes. This repois a work in progress and is subject to constant change.
 
 Description of some files and subdirectories. More information can be found inside the subdirectories:
 
-- [BurgersPINN](BurgersPINN) - case study of application of PINN in solving the Burgers' Equation 
+- [BurgersPINN](BurgersPINN) - case study of application of PINN in solving the Burgers' Equation .
 
-- [RRTMGP](RRTMGP) - case study of application of PIML in RRTMGP gas optics scheme.
+- [RRTMGP](RRTMGP) - case study of application of the PIML method in the RRTMGP gas optics scheme.
 
-- [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources
+- [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources.
 
-- [manuscript-2](manuscript-2) - Proposal Exam LaTeX sources
+- [manuscript-2](manuscript-2) - Proposal Exam LaTeX sources.
 
 This work is based on the works of:
 
