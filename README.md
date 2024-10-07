@@ -4,9 +4,9 @@
 
 This repository contains code, data, manuscripts, and other files used in my research on PIML (Physics-Informed Machine Learning) and PINN (Physics-Informed Neural Network) methods. Some case studies used in the study:
 
-- Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network.
+- Data-driven parameter discovery of one-dimensional Burgers' Equation using PINN.
 
-- Evaluation of physics-based machine learning (PIML) and other methods applied to the RRTMGP gas optics scheme used in ECMWF's ecRad radiation module.
+- Evaluation of PIML and other methods applied to the RRTMGP gas optics scheme used in ECMWF's ecRad radiation module.
 
 The acronym PD1B24 originally comes from the first studies entitled *PINN Discovery 1D Burgers 2024*.
 
@@ -37,8 +37,6 @@ Description of some files and subdirectories. More information can be found insi
 - [manuscript-2](manuscript-2) - Proposal Exam LaTeX sources
 
 - [ktuner](ktuner) - Notes on using Keras Tuner
-
-- 
 
 This work is based on the works of:
 
