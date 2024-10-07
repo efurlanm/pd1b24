@@ -18,8 +18,6 @@ Description of some files and subdirectories. More information can be found insi
 
 - [RRTMGP](RRTMGP) - case study of application of PIML in RRTMGP gas optics scheme.
 
-- 
-
 - [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources
 
 - [manuscript-2](manuscript-2) - Proposal Exam LaTeX sources
