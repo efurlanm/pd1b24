@@ -1,4 +1,4 @@
-# Evaluation of PIML and PINN using case studies (PD1B24)
+# Evaluation of the application of PIML and PINN methods
 
 *Last edited: 2024-10-07*
 
