@@ -8,6 +8,8 @@
 
 - [Burgers-1D-Exact-Solution.ipynb](Burgers-1D-Exact-Solution.ipynb) - 1D Burgers Exact Solution using the Gaussian Quadrature Method (GQM)
 
-- [1D_Burgers_Data_Driven_Parameter_Discovery.odp](1D_Burgers_Data_Driven_Parameter_Discovery.odp) - Presentation
+- [1D_Burgers_Data_Driven_Parameter_Discovery.odp](1D_Burgers_Data_Driven_Parameter_Discovery.odp) - presentation
 
-- [ktuner](ktuner) - Notes on using Keras Tuner
+- [ktuner](ktuner) - notes on using Keras Tuner
+
+- [data](data) - only contains symlinks to the data, which are not hosted on GitHub due to storage space constraints.
