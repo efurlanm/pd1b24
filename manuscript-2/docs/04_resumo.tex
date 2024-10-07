@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RESUMO %% obrigatório
+\begin{resumo}
+%% neste arquivo resumo.tex
+%% o texto do resumo e as palavras-chave têm que ser em Português para os documentos escritos em Português
+%% o texto do resumo e as palavras-chave têm que ser em Inglês para os documentos escritos em Inglês
+%% os nomes dos comandos \begin{resumo}, \end{resumo}, \palavraschave e \palavrachave não devem ser alterados
+%\hypertarget{estilo:resumo}{} %% uso para este Guia
+
+
+% -------------------------------------- OLD 2024-08-01
+% This thesis aims to exploit a physics-informed machine learning implementation of the ecRad radiation module used in a numerical model of the European Centre for Medium-Range Weather Forecasts (ECMWF). Such implementation may use a physics-based neural network, an approach already exploited for a simpler problem, the solving of the 1D Burger's equation. In this thesis proposal, a Deep Neural Network (DNN) was implemented, but it is not physics-informed. 
+
+% Former work about the 1D Burger's equation presented the use of a data-driven parameter discovery for a Partial Differential Equation (PDE) using a Physics-Informed Neural Network (PINN). This approach is then compared to some standard numerical models for parameter discovery. The 1D Burgers' equation is a PDE with spatial and temporal derivatives, which is generally solved by a numerical model. Recent studies proposed the use of a Deep Neural Network (DNN) for solving a PDE or for data-driven parameter discovery of the PDE. In any case, the training phase of DNN requires a high number of sample points in order to obtain accurate solutions. In this way, PINNs, which are DNN embedding underlying physical equations as prior knowledge, were proposed in order to make feasible the use of a lower number of sample points in the training phase. Usually, the physical equations are used in the PINN loss function. Similarly to any DNN, PINNs can also be considered universal function approximators. The accuracy and computation times related to the estimation of the 1D Burgers' equation were discussed.
+
+
+% -------------------------------------- OLD 2024-08-22
+%This thesis aims to explore Physics-Informed Machine Learning (PIML) alternatives for the ecRad radiation module used at the European Centre for Medium-Range Weather Forecasts (ECMWF). Such an implementation could employ a Physics-Informed Neural Network (PINN), an approach already used for a simpler problem, solving the one-dimensional (1D) Burgers' Equation. In this thesis proposal, a Deep Neural Network (DNN) was implemented, but not physics-informed.
+
+%Preliminary work addressed data-driven parameter discovery for a Partial Differential Equation (PDE) using a PINN. This approach was then compared with some standard numerical models for parameter discovery. The chosen test problem was the one-dimensional (1D) Burgers' Equation, a PDE with spatial and temporal derivatives, usually solved by a numerical model. Recent studies have proposed the use of some DNN to solve a PDE or for data-driven discovery of PDE parameters. In any case, the training phase of the DNN requires a large number of sample points to obtain accurate solutions. Consequently, PINNs, which are DNNs that incorporate underlying physical equations as prior knowledge, were proposed in order to enable the use of a smaller number of sample points in the training phase. Usually, physical equations are used in the PINN loss function. For the Burgers Equation, the accuracy and processing time to estimate the equation parameters are discussed. For the radiation module, the root mean square error (RMSE) of the heating rate and the processing time of ecRad are discussed.
+
+
+This thesis demonstrates the use of a Machine Learning (ML) approach to optimize part of the ecRad radiation module employed in numerical weather and climate models, which is implemented using a numerical algorithm and is very computationally demanding. The ecRad radiation module is employed in an operational model of the European Centre for Medium-Range Weather Forecasts (ECMWF), but in this work, it will be developed and tested as a stand-alone implementation. The gas-optical scheme of the radiation module would be replaced by a ML-based implementation, following the current trend applied to model standard microphysics modules. In particular, it is intended to explore Physics-Informed Machine Learning (PIML) alternatives for the gas-optical scheme, starting with a former class of PIML methods, the Physics-Informed Neural Networks (PINNs). However, preliminary work has already been carried out for the gas-optical scheme using a ML approach implemented by a Deep Neural Network (DNN), reproducing the work of some authors. An incremental approach is then proposed for the thesis, starting with a non-PIML DNN, followed by a PINN implementation, and then exploring other PIML implementations. A previous of this thesis work applied a PINN approach to a simpler problem related to the one-dimensional Burgers' Equation, modeled by a partial differential equation. Test results and analyses are presented here for both previous works. An additional point is how to integrate the ML code, implemented in the Python environment and its associated libraries, with the ecRad radiation module written in Fortran 90.
+
+
+
+
+\palavraschave{%
+	\palavrachave{Physics-informed Machine Learning}%
+    \palavrachave{Radiation Module}%
+	\palavrachave{Deep Neural Network}%
+	\palavrachave{Physics-informed Neural Network}%
+	\palavrachave{High Performance Computing}%
+}
+ 
+\end{resumo}

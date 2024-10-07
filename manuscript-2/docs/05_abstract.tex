@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+\begin{abstract}
+%% neste arquivo abstract.tex
+%% o texto do resumo e as palavras-chave têm que ser em Inglês para os documentos escritos em Português
+%% o texto do resumo e as palavras-chave têm que ser em Português para os documentos escritos em Inglês
+%% os nomes dos comandos \begin{abstract}, \end{abstract}, \keywords e \palavrachave não devem ser alterados
+%\selectlanguage{english}	%% para os documentos escritos em Português
+\selectlanguage{portuguese}	%% para os documentos escritos em Inglês
+%\hypertarget{estilo:abstract}{} %% uso para este Guia
+
+%Esta tese objetiva explorar alternativas de Aprendizado de Máquina Informado pela Física (\textit{Physics-Informed Machine Learning}, PIML) para o módulo de radiação ecRad usado no European Centre for Medium-Range Weather Forecasts (ECMWF). Tal implementação pode empregar uma Rede Neural Informada pela Física (\textit{Physics-Informed Neural Network}, PINN), uma abordagem já utilizada para um problema mais simples, a resolução da Equação de Burgers unidimensional (1D). Nesta proposta de tese, uma Rede Neural Profunda (\textit{Deep Neural Network}, DNN) foi implementada, mas não informada pela física.
+
+%Trabalhos preliminares abordaram descoberta de parâmetros baseada em dados para uma Equação Diferencial Parcial (EDP) usando uma PINN. Esta abordagem foi então comparada com alguns modelos numéricos padrão para descoberta de parâmetros. O problema-teste escolhido foi a Equação de Burgers unidimensional (1D), uma EDP com derivadas espaciais e temporais, geralmente resolvida por modelo numérico. Estudos recentes propuseram o uso de alguma DNN para resolver uma EDP ou para descoberta de parâmetros da EDP baseada em dados. De qualquer forma, a fase de treinamento da DNN requer um elevado número de pontos amostrais para obter soluções precisas. Consequentemente, PINNs, que são DNNs que incorporam equações físicas subjacentes como conhecimento prévio, foram propostos a fim de viabilizar a utilização de uma quantidade menor de pontos amostrais na fase de treinamento. Geralmente as equações físicas são usadas na função de perda da PINN. Para a Equação de Burgers, a precisão e o tempo de processamento para estimar os parâmetros da equação são discutidos. O erro quadrático médio (\textit{Root Mean Square Error}, RMSE) da taxa de aquecimento e o tempo de processamento do ecRad são discutidos.
+
+
+Esta tese demonstra o uso de uma abordagem de aprendizado de máquina para otimizar parte do módulo de radiação ecRad empregado em modelos numéricos de previsão de tempo de clima, o qual emprega um algoritmo numérico que requer muito processamento. O módulo de radiação ecRad é usado num modelo operacional do European Centre for Medium-Range Weather Forecasts (ECMWF), mas neste trabalho será desenvolvido e testado como uma implementação independente. O esquema gás-ótico do módulo de radiação será substituído por uma implementação baseada em aprendizado de máquina, seguindo a tendência atual aplicada a módulos padrão da microfísica de modelos. Em particular, pretende-se explorar alternativas de Physics-Informed Machine Learning (PIML) para o esquema gás-ótico, começando com uma classe inicialmente proposta de métodos PIML, as Physics-Informed Neural Networks (PINNs). Entretanto, um estudo preliminar já foi desenvolvido para o esquema gás-ótico usando uma abordagem de aprendizado de máquina implementado por uma rede neural profunda (Deep Neural Network - DNN), reproduzindo o trabalho de alguns autores. Uma abordagem incremental é então proposta para a tese, começando com a DNN, fora do escopo de PIML, seguida de uma abordagem PINN e depois explorando outras classes de métodos PIML. Outro trabalho preliminar da tese aplicou uma abordagem PINN para um problema mais simples relacionado à equação unidimensional de Burgers, que é modelada por uma equação diferencial parcial. Resultados de testes e análises são apresentados aqui para ambos esses trabalhos preliminares. Um ponto adicional é como integrar o código de aprendizado de máquina, implementado no ambiente Python e suas bibliotecas associadas, com o módulo de radiação ecRad escrito em Fortran 90.
+
+
+\palavraschave{%
+	\palavrachave{Aprendizado de Máquina Informado pela Física}%
+	\palavrachave{Módulo de Radiação}%
+    \palavrachave{Rede Neural Profunda}%
+	\palavrachave{Rede Neural Informada pela Física}%
+	\palavrachave{Processamento de Alto Desempenho}%
+}
+
+%\selectlanguage{portuguese}	%% para os documentos escritos em Português
+\selectlanguage{english}	%% para os documentos escritos em Inglês
+\end{abstract}

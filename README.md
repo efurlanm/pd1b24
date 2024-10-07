@@ -1,12 +1,14 @@
-# PIML Radiation and PINN Discovery 1D Burgers 2024 (PD1B24)
+# Evaluation of PIML and PINN using case studies (PD1B24)
 
-*Last edited: 2024-08-23*
+*Last edited: 2024-10-07*
 
 This repository contains the code, data, manuscripts, and other files used in the research:
 
-- *Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network*
+- Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network.
 
-- *Implementation of the ecRad Radiation Module using Physics Informed Machine Learning*
+- Evaluation of physics-informed machine learning (PIML), and other methods, using the ECMWF ecRad Radiation Module as a case study.
+
+The acronym PD1B24 originally comes from the first studies entitled *PINN Discovery 1D Burgers 2024*.
 
 It is a work in progress and subject to constant changes.
 
@@ -28,6 +30,8 @@ Description of some files and directories:
 
 - [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources
 
+- [manuscript-2](manuscript-2) Proposal Exam LaTeX sources
+
 - [ukk23](ukk23) - Notes on the use of PINN in gas optics radiation scheme
 
 - [ktuner](ktuner) - Notes on using Keras Tuner
@@ -35,7 +39,6 @@ Description of some files and directories:
 - [manuscript-2](manuscript-1) - Thesis Proposal Examination LaTeX sources
 
 - `*-environment.txt` - spec files for the purpose of recreating a [Conda environment](<https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>) identical to the one used in the experiments
-
 
 This work contains some parts adapted from the works of:
 

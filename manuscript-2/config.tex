@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%CAPA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\serieinpe{INPE-NNNNN-TDI/NNNN} %% não mais usado
+
+%\titulo{Data-driven Parameter Discovery of One-dimensional Burgers' Equation Using Physics-Informed Neural Network}
+\titulo{Implementation of the ecRad Radiation Module Using Physics Informed Machine Learning}
+%\title{Descoberta de parâmetros baseada em dados da equação de Burguers unidimensional usando rede neural informada pela física} %% 
+\title{Implementação do Módulo de Radiação ecRad Usando Aprendizado de Máquina Informado pela Física} %% 
+\author{Eduardo F. Miranda}
+\descriccao{Exame de Proposta de Doutorado do Curso de Pós-Graduação em Computação Aplicada, orientada pelos Dr. Stephan Stephany e Dr. Roberto Pinto Souto aprovada em 27 de agosto de 2024.}
+\repositorio{aa/bb/cc/dd} %% repositório onde está depositado este documento - na omissão, será preenchido pelo SID
+\tipoDaPublicacao{TDI}	%% tipo da publicação (NTC, RPQ, PRP, MAN, PUD, TDI, TAE e PRE) na ausência do número de série INPE, caso contrário deixar vazio
+\IBI{xx/yy} %% IBI (exemplo: J8LNKAN8PW/36CT2G2) quando existir, caso contrário o nome do repositório onde está depositado o documento
+
+\date{2024}%ano da publicação
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%VERSO DA CAPA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tituloverso{\vspace{-0.9cm}\textbf{\PublicadoPor:}}
+\descriccaoverso{Instituto Nacional de Pesquisas Espaciais - INPE\\
+Coordenação de Ensino, Pesquisa e Extensão (COEPE)\\
+Divisão de Biblioteca (DIBIB)\\
+CEP 12.227-010\\
+São José dos Campos - SP - Brasil\\
+Tel.:(012) 3208-6923/7348\\
+%Fax: (012) 3208-6919\\
+E-mail: {pubtc@inpe.br}
+}
+\descriccaoversoA{\textbf{\ConselhoDeEditoracao:}\\
+\textbf{\Presidente:}\\
+Dra. Marley Cavalcante de Lima Moscati -  Coordenação-Geral de Ciências da Terra (CGCT)\\
+\textbf{\Membros:}\\
+Dra. Ieda Del Arco Sanches - Conselho de Pós-Graduação (CPG)\\
+Dr. Evandro Marconi Rocco - Coordenação-Geral de Engenharia, Tecnologia e Ciência Espaciais  (CGCE)\\
+Dr. Rafael Duarte Coelho dos Santos - Coordenação-Geral de Infraestrutura e Pesquisas Aplicadas (CGIP)\\
+Simone Angélica Del Ducca Barbedo - Divisão de Biblioteca (DIBIB)\\
+\textbf{\BibliotecaDigital:}\\
+Dr. Gerald Jean Francis Banon \\
+Clayton Martins Pereira - Divisão de Biblioteca (DIBIB)\\
+%Jefferson Andrade Ancelmo - Divisão de Biblioteca (DIBIB)\\
+%Simone A. Del-Ducca Barbedo - Divisão de Biblioteca (DIBIB)\\
+%Deicy Farabello - Centro de Previsão de Tempo  e Estudos Climáticos (CGCPT)\\
+\textbf{\RevisaoNormalizacaoDocumentaria:}\\
+Simone Angélica Del Ducca Barbedo - Divisão de Biblioteca (DIBIB) \\
+%Marilúcia Santos Melo Cid - Divisão de Biblioteca (SID)\\
+%Yolanda Ribeiro da Silva Souza - Divisão de Biblioteca (DIBIB)\\
+André Luis Dias Fernandes - Divisão de Biblioteca (DIBIB)\\
+\textbf{\EditoracaoEletronica:}\\
+Ivone Martins - Divisão de Biblioteca (DIBIB)\\
+André Luis Dias Fernandes - Divisão de Biblioteca (DIBIB)\\
+}
+
+%%%%%%%%%%%%%%%%%%%FOLHA DE ROSTO
+
+%%%%%%%%%%%%%%%FICHA CATALOGRÁFICA
+%% NÃO PREENCHER - SERÁ PREENCHIDO PELO SID
+
+\cutterFICHAC{Cutter}
+\autorUltimoNomeFICHAC{Sobrenome, Nomes} %% exemplo: Fuckner, Marcus André
+\autorFICHAC {Nome Completo do Autor1; Nome Completo do Autor2} %% Campo opcional (se não usado prevalece \author)
+\tituloFICHAC{Titulo da publicação}
+\instituicaosigla{INPE}
+\instituicaocidade{São José dos Campos}
+\paginasFICHAC{\pageref{numeroDePáginasDoPretexto} + \pageref{LastPage}} %% número total de páginas
+%\serieinpe{INPE-00000-TDI/0000} %% não mais usado
+\palavraschaveFICHAC{1.~Palavra chave. 2.~Palavra chave 3.~Palavra chave. 4.~Palavra chave. 5.~Palavra chave  I.~\mbox{Título}.} %% recomenda-se pelo menos 5 palavras-chaves - \mbox{} é para evitar hifenização 
+\numeroCDUFICHAC{000.000} %% número do CDU 
+
+% Nota da ficha (para TD)
+\tipoTD{Dissertação ou Tese} % Dissertação ou Tese
+\cursoFA{Mestrado ou Doutorado em Nome do Curso}
+\instituicaoDefesa{Instituto Nacional de Pesquisas Espaciais}
+\anoDefesa{AAAA} % ano de defesa 
+\nomeAtributoOrientadorFICHAC{Orientador}	% pode ser: Orientador, Orientadora ou Orientadores
+\valorAtributoOrientadorFICHAC{José da Silva} % nome(s) completo(s)
+
+%%%%%%%%%%%%%%%FOLHA DE APROVAÇAO PELA BANCA EXAMINADORA
+\tituloFA{\textbf{ATENÇÃO! A FOLHA DE APROVAÇÃO SERÁ INCLUIDA POSTERIORMENTE.}}
+%\cursoFA{\textbf{}}
+\candidatoOUcandidataFA{}
+\dataAprovacaoFA{}
+\membroA{}{}{}
+\membroB{}{}{}
+\membroC{}{}{}
+\membroD{}{}{}
+\membroE{}{}{}
+\membroF{}{}{}
+\membroG{}{}{}
+\ifpdf
+
+%%%%%%%%%%%%%%NÍVEL DE COMPRESSÃO {0 -- 9}
+\pdfcompresslevel 9
+\fi
+%%% define em 80% a largura das figuras %%%
+\newlength{\mylenfig} 
+\setlength{\mylenfig}{0.8\textwidth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%COMANDOS PESSOAIS
+%\newcommand{\vetor}[1]{\mathit{\mathbf{#1}}}
+
+
+
+\graphicspath{{docs/img/}}  %#ef
+
+\hbadness=10000
+\vbadness=10000
+
+
+\usepackage{microtype}  %#ef
+
+\usepackage{lipsum}  %#ef
+
+\usepackage{listings}  %#ef
+% \makeatletter
+% \let\@ORGmakecaption\@makecaption
+% \long\def\@makecaption#1#2{\@ORGmakecaption{#1}{#2}\vskip\belowcaptionskip\relax}
+% \makeatother
+\lstdefinestyle{mystyle}{
+frame               = single,
+rulecolor           = \color{gray},
+basicstyle          = \ttfamily\small,
+belowcaptionskip    = 8pt,
+aboveskip           = 8pt,
+belowskip           = 8pt,
+columns             = fullflexible,
+breakatwhitespace   = false,
+breaklines          = true,
+keepspaces          = true,
+showspaces          = false,
+showstringspaces    = false,
+inputencoding       = utf8,
+extendedchars       = true,
+literate            =
+{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+{€}{{\EUR}}1 {£}{{\pounds}}1 {ã}{{\~a}}1 {Ã}{{\~A}}1,
+showtabs=false,
+tabsize=2,
+}
+\lstset{}  %#ef
+\lstset{style=mystyle}  %#ef
+
+\usepackage{xurl}  %#ef
+
+\usepackage{enumitem} %#ef  % http://ctan.org/pkg/enumitem
+
+\usepackage{placeins}  %#ef  % floatbarrier
+
+
+
+
+% PARA PUBLICAÇÕES EM INGLÊS:
+%% Descomentar essa linha para publicações em inglês
+\bibliographystyle{./template/abnt-alfenglish}
+
+% PARA PUBLICAÇÕES EM PORTUGUÊS:
+%% comentar essa linha para publicações em inglês
+%\bibliographystyle{./template/abnt-alfportuguese}
+

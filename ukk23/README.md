@@ -2,9 +2,9 @@
 
 This subrepository contains my research and notes on the PINN radiation scheme suitable for use in atmospheric weather and climate models. The initial idea was to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with PINN. It is a work in progress and subject to constant change.
 
-Based on several sources, including:
+Based on:
 
-- Ukkonen, P., & Hogan, R. J. (2023). Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0. Geoscientific Model Development, 16(11), 3241–3261. https://doi.org/10.5194/gmd-16-3241-2023
+- Ukkonen, P., & Hogan, R. J. (2023). Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0. Geoscientific Model Development, 16(11), 3241–3261. <https://doi.org/10.5194/gmd-16-3241-2023>
 
 
 
