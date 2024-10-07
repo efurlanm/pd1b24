@@ -1,4 +1,4 @@
-***ecRad* radiation scheme: User Guide**
+# ecRad radiation scheme: User Guide
 
 Robin J. Hogan  
 European Centre for Medium Range Weather Forecasts, Reading, UK
@@ -7,38 +7,31 @@ Document version 1.5 (June 2022) applicable to *ecRad* version 1.5.x
 
 This document is copyright (c) European Centre for Medium Range Weather Forecasts 2018–. If you have any queries about *ecRad* that are not answered by this document or by the information on the *ecRad* web site (<https://confluence.ecmwf.int/display/ECRAD>) then please email me at <r.j.hogan@ecmwf.int>.
 
----
+**Contents**
 
-# Contents
+| Section | Description                             |
+|-------|-------------------------------------------|
+| 1     | Introduction                              |
+| 1.1   | What is ecRad?                            |
+| 1.2   | Overview of this document                 |
+| 2     | Using the offline radiation scheme        |
+| 2.1   | Compiling the package                     |
+| 2.2   | Running the offline radiation scheme      |
+| 2.2.1 | Input file format                         |
+| 2.2.2 | Output file format                        |
+| 2.3   | Configuring the radiation scheme          |
+| 2.3.1 | Configuring aerosol optical properties    |
+| 2.3.2 | Configuring surface albedo and emissivity |
+| 2.3.3 | Configuring cloud optical properties      |
+| 2.3.4 | Configuring the gas-optics model          |
+| 2.4   | Configuring the offline package           |
+| 2.5   | Describing cloud structure                |
+| 2.6   | Checking the configuration                |
+| 3     | Incorporating ecRad into another program  |
 
-| 1                                          | Introduction                              | 2  |
-|--------------------------------------------|-------------------------------------------|----|
-| 1.1                                        | What is ecRad? .                          | 2  |
-| 1.2                                        | Overview of this document.                | 2  |
+## Chapter 1 - Introduction
 
-| 2                                          | Using the offline radiation scheme        | 3  |
-|--------------------------------------------|-------------------------------------------|----|
-| 2.1                                        | Compiling the package                     | 3  |
-| 2.2                                        | Running the offline radiation scheme      | 4  |
-| 2.2.1                                      | Input file format                         | 5  |
-| 2.2.2                                      | Output file format                        | 6  |
-| 2.3                                        | Configuring the radiation scheme          | 7  |
-| 2.3.1                                      | Configuring aerosol optical properties    | 10 |
-| 2.3.2                                      | Configuring surface albedo and emissivity | 10 |
-| 2.3.3                                      | Configuring cloud optical properties      | 11 |
-| 2.3.4                                      | Configuring the gas-optics model          | 12 |
-| 2.4                                        | Configuring the offline package           | 12 |
-| 2.5                                        | Describing cloud structure                | 13 |
-| 2.6                                        | Checking the configuration                | 15 |
-
-| 3 Incorporating ecRad into another program |                                           | 20 |
-|--------------------------------------------|-------------------------------------------|----|
-
-Note: The page numbering in the Contents comes from the PDF version and does not make sense in this HTML version.
-
-# Chapter 1 - Introduction
-
-## 1.1 What is ecRad?
+### 1.1 What is ecRad?
 
 *ecRad* is an atmospheric radiation scheme designed for computing profiles of solar (or *shortwave*) and thermal infrared (or *longwave*) irradiances from the surface up to the middle mesosphere. It is incorporated into the Integrated Forecasting System (IFS), the weather forecast model used operationally by the European Centre for Medium-Range Weather Forecasts (ECMWF), in which it is used to compute radiative heating and cooling rates of the atmosphere and surface. It is also used operationally by the German Weather Service in the ICON model. An offline version of the scheme is available under the open source Apache License, version 2, from these locations:
 
@@ -47,13 +40,13 @@ Note: The page numbering in the Contents comes from the PDF version and does not
 
 A scientific overview of *ecRad* was provided by Hogan and Bozzo (2018), with a little more technical information available from Hogan and Bozzo (2016). Two gas-optics models are available: the Rapid Radiative Transfer Model for GCMs (RRTMG; Iacono et al., 2008), and the ECMWF correlated k-distribution scheme (ecCKD; Hogan and Matricardi, 2022). Three different solvers capable of representing the effects of subgrid cloud structure are available: McICA (Pincus et al., 2003), Tripleclouds (Shonk and Hogan, 2008) and SPARTACUS (Hogan et al., 2016). The treatment of cloud and aerosol optical properties is easily extensible. It is coded in Fortran 2003 in a way that is efficient, but also flexible in the sense that the solver and the optical models for clouds, aerosols and gases can be changed independently.
 
-## 1.2 Overview of this document
+### 1.2 Overview of this document
 
 Chapter 2 describes how to compile and use the offline version of *ecRad*, which is essentially a Unix program that reads a configuration file and a NetCDF file containing a description of the atmospheric state, and outputs a NetCDF file containing the computed irradiance profiles. Chapter 3 describes how to incorporate *ecRad* into a larger Fortran program, such as an atmospheric model. At some future date this document will be expanded to include chapters describing the internal architecture and the detailed scientific documentation.
 
-# Chapter 2 - Using the offline radiation scheme
+## Chapter 2 - Using the offline radiation scheme
 
-## 2.1 Compiling the package
+### 2.1 Compiling the package
 
 The offline version of *ecRad* is designed to be used on a Unix-like platform. You will need a Fortran compiler that supports the 2003 standard, such as `gfortran`. As a prerequisite, you will need to install the NetCDF library, including the Fortran interface (packages to install on a Linux system are typically called `libnetcdff-dev` or `libnetcdff-devel`). To run some of the tests, you will also need to install the NCO utilities for manipulating NetCDF Files.
 
@@ -124,7 +117,7 @@ Remember that if you change the compile settings you will probably want to recom
 
     make clean
 
-## 2.2 Running The Offline Radiation Scheme
+### 2.2 Running The Offline Radiation Scheme
 
 The easiest and most fun way to become familiar with how to use *ecRad* is to do the practical exercises: enter the `practical` directory, read the `ecrad_practical.pdf` document there and follow the instructions. You will learn about how changes to atmospheric gases provide the radiative forcing that drives climate change, uncertainties in the representation of clouds in radiation schemes, and the impact of aerosols on surface fluxes and atmospheric heating rates.
 
@@ -138,7 +131,7 @@ which runs make in each of the subdirectories of the test directory. The `README
 
 where `ecrad` needs to be the full path to the *ecRad* executable, `config.nam` is a Fortran namelist file configuring the code, `input.nc` contains the input atmospheric profiles and `output.nc` contains the output irradiance (flux) profiles. The namelist file contains a `radiation` namelist that configures the *ecRad* scheme itself; the parameters available are described in section 2.3. The file also contains a `radiation_config` namelist that configures aspects of the offline package, described in section 2.4. Only the `radiation` namelist is used when *ecRad* is incorporated into an atmospheric model.
 
-## 2.2.1 Input File Format
+#### 2.2.1 Input File Format
 
 The input NetCDF file contains numerous floating-point variables listed in Table 2.1. The dimensions are shown in the order that they are listed by the `ncdump` utility, with the first dimension varying slowest in the file (opposite to the Fortran convention). Most variables are stored as a function of column and level (dimensions named `col` and  `level` in Table 2.1, although the actual dimension names are ignored by *ecRad*). The `half_level` dimension corresponds to the mid-points of the levels, plus the top-of-atmosphere and surface, and so must be one more than `level`. The `level_interface` dimension excludes the top-of-atmosphere and surface so must be one less than `level`. The optional `sw_albedo_band` and `lw_emiss_band` dimensions allow for shortwave albedo and longwave emissivity to be specified in user-defined spectral intervals. Some variables can be omitted in which case default values will be used or these fields will be constructed according to `radiation_config` namelist parameters (section 2.4).
 
@@ -179,7 +172,7 @@ Typically the first two hydrometeor types contain liquid and ice properties, and
 
 All the test data in the ecRad package store input fields in order of increasing pressure, i.e. starting at the topof-atmosphere and working down to the surface. The output data are then provided using the same convention. If input data are provided in the opposite order then this should be automatically detected and under the bonnet the order is reversed before being passed to the radiation scheme. But if you use this convention then please test the results carefully as this option is not regularly tested. The variables describing cloud properties, particularly sub-grid cloud struture, are defined in detail in section 2.5.
 
-## 2.2.2 Output File Format
+#### 2.2.2 Output File Format
 
 The output NetCDF file contains the typical set of variables listed in Table 2.2. Clear-sky fluxes (i.e. computed on the same input profiles but in the absence of clouds) are provided if the `do_clear` namelist parameter is set to `true` (see section 2.3). If you need diagnostic downward fluxes at the surface for just a subset of the spectrum (e.g. ultraviolet or photosynthetically active radiation) then they can be computed from the `spectral_flux_dn_*` variables, activated if namelist variable do_surface_sw_spectral_flux is set to true. In some contexts it is also useful to have fluxes in each of the shortwave albedo or longwave emissivity spectral intervals. These are named `canopy_flux_dn_*` and are activated if `do_canopy_fluxes_sw` or `do_canopy_fluxes_lw` are set to true. Note that if you want atmospheric heating rates then you will need to compute them yourself from the flux profiles.
 
@@ -206,7 +199,7 @@ Table 2.2: Variables contained in the output NetCDF file from *ecRad*, where all
 | cloud_cover_sw                        | col                 | Total cloud cover diagnosed by shortwave solver                                             |
 | cloud_cover_lw                        | col                 | Total cloud cover diagnosed by longwave solver                                              |
 
-## 2.3 Configuring The Radiation Scheme
+### 2.3 Configuring The Radiation Scheme
 
 The detailed settings of *ecRad* are configured using the `radiation` namelist in the namelist file provided as the first command-line argument to the `ecrad` executable. The available namelist parameters are listed in Table 2.3. One of the most important is `directory_name`, which provides the absolute or relative path to the directory containing all the configuration files. This is the `data` directory at the top level of the *ecRad* package. Note that the default values listed in Table 2.3 may differ in some cases from the values used operationally in the IFS (see Table 2 of Hogan and Bozzo, 2018).
 
@@ -294,7 +287,7 @@ Table 2.3: Options for the `radiation` namelist that configures the radiation sc
 
 Several aspects of Table 2.3 deserve further explanation, particularly those that are configured with vectors, and are covered in the following subsections.
 
-## 2.3.1 Configuring Aerosol Optical Properties
+#### 2.3.1 Configuring Aerosol Optical Properties
 
 As shown in Table 2.1, aerosols are provided to *ecRad* in the form of the mass mixing ratios of a number of different aerosol types. The optical properties of an arbitrary number of hydrophilic and hydrophobic aerosol types are provided in a NetCDF file; for example `data/aerosol_ifs_rrtm_49R1.nc` in the *ecRad* package contains aerosol properties in the RRTMG bands, while `data/aerosol_ifs_49R1.nc` describes the properties at high spectral resolution and is used if `use_general_aerosol_optics` is `true`. The mapping between the input aerosol concentrations and the aerosol types in the optical-property file may be specified in the `radiation` namelist. The `n_aerosol_types` parameter specifies the number of aerosol concentrations to be provided, with a value of zero having the effect of deactivating aerosols. `i_aerosol_type_map` is a vector of integers of length `n_aerosol_types` indicating which aerosol type to select from the optical-property file. Negative numbers select hydrophilic types, whose optical properties vary with relative humidity, while postitive numbers select hydrophobic types. Zero indicates that an input aerosol type is to be ignored. As an example, the IFS settings (in the `test/ifs` directory) are specified with:
 
@@ -304,7 +297,7 @@ As shown in Table 2.1, aerosols are provided to *ecRad* in the form of the mass 
 
 When *ecRad* is run, the output printed to the terminal includes a description of the aerosol mapping.
 
-## 2.3.2 Configuring Surface Albedo And Emissivity
+#### 2.3.2 Configuring Surface Albedo And Emissivity
 
 A similar mechanism is used to describe how spectral intervals of the input `sw_albedo` and `lw_emissivity` should be interpretted. This is best explained by considering the configuration of the IFS in Cycle 47R1, which is described by the following namelist variables:
 
@@ -319,7 +312,7 @@ A similar mechanism is used to describe how spectral intervals of the input `sw_
 The IFS describes surface albedo in six spectral intervals. The vector `sw_albedo_wavelength_bounds` here provides the wavelengths, in metres, of the five boundaries between these intervals, where the first interval is taken to include all wavelengths shorter than the first value (in this case 0.25 µm) and the last includes all wavelengths longer than the last value (in this case 2.38 µm). The vector `i_sw_albedo_index` specifies which of the elements of the input sw_albedo field should be used in each of the six spectral intervals. Surface emissivity is described similarly: there are three spectral intervals specified by the two boundaries in `lw_emiss_wavelength_bound`. The corresponding vector `i_lw_emiss_index` contains two occurrences of the index 1, indicating that the first element of `lw_emissivity` is used both for wavelengths smaller than 8 µm and wavelengths larger than 13 µm
 (i.e. outside the infrared atmospheric window). The second element is then used for wavelengths between these two boundaries. Thus even though there are three spectral intervals, only two elements are needed in `lw_emissivity`. The logicals `do_nearest_spectral_sw_albedo` and `do_nearest_spectral_lw_emiss` specify whether the bands of the gas optics scheme used in *ecRad* will use a single value of albedo or emissivity from the input fields (chosen to be the spectral interval with the largest overlap in wavenumber space with each band of the gas-optics scheme), or whether they will weight the spectral intervals by their overlap with each band of the gasoptics scheme. Finally, `do_weighted_surface_mapping` specifies whether to use a weighted mapping using the Planck function at a representative temperature of the sun or the earth in the shortwave and longwave, respectively; this is more accurate but this feature was not available before *ecRad* version 1.5 so should be `false` to reproduce earlier behaviour. The mapping from spectral interval to band is printed on standard output when *ecRad* is run, as shown in the example in section 2.6.
 
-## 2.3.3 Configuring cloud optical properties
+#### 2.3.3 Configuring cloud optical properties
 
 All parameterizations for the optical properties of hydrometeors are expressed in terms of effective radius, which is assumed to be defined by:
 
@@ -355,7 +348,7 @@ Whether cloud optical properties will be computed per band (less accurate but re
     use_thick_cloud_spectral_averaging(1) = true 
     use_thick_cloud_spectral_averaging(2) = false
 
-## 2.3.4 Configuring The Gas-Optics Model
+#### 2.3.4 Configuring The Gas-Optics Model
 
 By default the RRTMG gas-optics model is used, which uses 16 and 14 bands in the longwave and shortwave, respectively, containing a total of 140 and 112 g-points (spectral intervals) in the longwave and shortwave, respectively. The number of g-points determines how many quasi-monochromatic calculations are performed to cover the full broadband spectrum, and therefore the computational cost. To use the ecCKD scheme of Hogan and Matricardi (2022) instead, use the following namelist option 
 
@@ -373,7 +366,7 @@ The first was generated using ecCKD version 1.0 for the longwave spectrum, uses 
 
 These models each use a total of 64 g-points; the first uses the 13-band 'narrow' band structure of Hogan and Matricardi (2020) and the second uses a band structure containing separate bands for each of the windows in the near infrared (Hogan and Matricardi, 2022). These two models are more accurate but slower, so more suited for reference calculations. More models are available from the ecCKD web site `https://confluence.ecmwf.int/x/XwU0Dw`.
 
-## 2.4 Configuring The Offline Package
+### 2.4 Configuring The Offline Package
 
 In addition to the namelist parameters described in section 2.3 an additional set of parameters are available in the `radiation_config` namelist that are specific to the offline version of *ecRad* and are listed in Table 2.4. In general if these parameters are present in the namelist then they will override the corresponding variable provided in the input file.
 
@@ -417,7 +410,7 @@ Table 2.4: Options for the `radiation_config` namelist that configures additiona
 | cloud_separation_scale_toa                                 | Top-of-atmosphere cloud separation scale in pressure-dependent parameterization                                                 |
 | cloud_separation_scale_power                               | Power in cloud separation scale parameterization                                                                                |
 
-## 2.5 Describing Cloud Structure
+### 2.5 Describing Cloud Structure
 
 Probably more than any other 1D radiation scheme, *ecRad* allows the user to define in detail the statistical properties of the sub-grid cloud distribution, and in this section the relevant variables and namelist parameters are explained in more detail. In an operational context most of these variables need to be parameterized, but in developing new solvers we need to perform explicit radiation calculations on realistic high resolution 3D cloud fields, and compare them to *ecRad* simulations in which the profiles of these variables have been extracted from the 3D
 cloud fields. This has been done by Schafer et al. ¨ (2016), Hogan et al. (2016) and Hogan et al. (2019). Explicit radiation calculations on a 3D cloud field can either be performed using the Independent Column Approximation
@@ -466,7 +459,7 @@ $$C_{X}^{\mathrm{TOA}}=1.62\,\Delta x^{0.47}, \tag{2.8} $$
 
 where both $C^{TOA}_X$ and $\Delta x$ are in km. The surface value of $C_X$ can be assumed to be 2.5 km for all model resolutions.
 
-## 2.6 Checking The Configuration
+### 2.6 Checking The Configuration
 
 When ecrad is run, it outputs to the screen a summary of the configuration options, the files read and written and details of the aerosol mapping. This can be used to check that *ecRad* has been configured as intended. The following is an example from typing 
 
@@ -745,7 +738,7 @@ Writing NetCDF file ecrad_meridian_ecckd_tc_out.nc
 ------------------------------------------------------------------------------------
 ```
 
-# Chapter 3 - Incorporating ecRad into another program
+## Chapter 3 - Incorporating ecRad into another program
 
 *ecRad* can be called within a larger program, and indeed it has been incorporated into several atmospheric models (the IFS, Meso-NH and ICON). Pending a full description here of how to do this, see the `ifs/radiation_setup.F90` in the *ecRad* package to see how it is configured in the IFS, and `ifs/radiation_scheme.F90` for how it is run.
 
@@ -765,7 +758,7 @@ Table 3.1: Integers in the `config_type` structure that represents the strings i
 | i_cloud_pdf_shape         | **IPdfShapeGamma**, IPdfShapeLognormal                                                                           |
 
 
-# Bibliography
+## Bibliography
 
 Baran, A. J., P. Hill, D. Walters, S. C. Hardiman, K. Furtado, P. R. Field and J. Manners, 2016: The impact of two coupled cirrus microphysics–radiation parameterizations on the temperature and specific humidity biases in the tropical tropopause layer in a climate model. *J. Climate,* 29, 5299–5316.
 
