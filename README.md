@@ -22,8 +22,6 @@ Description of some files and subdirectories. More information can be found insi
 
 - [manuscript-2](manuscript-2) - Proposal Exam LaTeX sources
 
-- [ktuner](ktuner) - Notes on using Keras Tuner
-
 This work is based on the works of:
 
 - Raissi et al. <https://github.com/maziarraissi/PINNs/>
