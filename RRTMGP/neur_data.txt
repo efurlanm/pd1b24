@@ -9,6 +9,10 @@ lw-g128-210809_absorption_BEST.nc
 lw-g128-210809_both_56_56_HR_1.11e+00_FRC_7.57e-01.nc
 lw-g128-210809_both_64_64_HR_1.10e+00_FRC_8.79e-01.nc
 lw-g128-210809_both_72_72_HR_1.01e+00_FRC_1.83e+00.nc
+lw-g128-210809_both_72_72_test01.h5
+lw-g128-210809_both_72_72_test01.keras
+lw-g128-210809_both_72_72_test01.nc
+lw-g128-210809_both_72_72_test01..nc
 lw-g128-210809_both_BEST.nc
 lw-g128-210809_planck_frac_24_24_HR_1.15e+00_FRC_7.06e-01.nc
 lw-g128-210809_planck_frac_24_24_HR_1.21e+00_FRC_8.36e-01.nc
