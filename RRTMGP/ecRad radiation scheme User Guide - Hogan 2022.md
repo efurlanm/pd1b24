@@ -196,17 +196,17 @@ The output NetCDF file contains the typical set of variables listed in Table 2.2
 | flux_dn_direct_sw                  | col, half_level | Direct component of downwelling shortwave flux           |
 | flux_dn_direct_sw_clear            | col, half_level | Direct component of downwelling clear-sky shortwave flux |
 | flux_up_lw, flux_dn_lw             | col, half_level | Up- and down-welling longwave fluxes                     |
-| flux_up_lw_clear, flux_dn_lw_clear    | col, half_level     | Up- and down-welling clear-sky longwave fluxes                                              |
-| lw_derivative                         | col, half_level     | Derivative of upwelling longwave flux with respect to surface value (Hogan and Bozzo, 2015) |
-| spectral_flux_dn_sw_surf              | col, band_sw        | Downwelling surface shortwave flux in each band                                             |
-| spectral_flux_dn_direct_sw_surf       | col, band_sw        | Direct downwelling surface shortwave flux in each band                                      |
-| spectral_flux_dn_sw_surf_clear        | col, band_sw        | Clear-sky downwelling surface shortwave flux in each band                                   |
-| spectral_flux_dn_direct_sw_surf_clear | col, band_sw        | Clear-sky direct downwelling surface shortwave flux in each band                            |
-| canopy_flux_dn_diffuse_sw_surf        | col, sw_albedo_band | Downwelling diffuse surface shortwave flux in each albedo interval                          |
-| canopy_flux_dn_direct_sw_surf         | col, sw_albedo_band | Downwelling direct surface shortwave flux in each albedo interval                           |
-| canopy_flux_dn_lw_surf                | col, lw_emiss_band  | Downwelling surface longwave flux in each emissivity interval                               |
-| cloud_cover_sw                        | col                 | Total cloud cover diagnosed by shortwave solver                                             |
-| cloud_cover_lw                        | col                 | Total cloud cover diagnosed by longwave solver                                              |
+| flux_up_lw_clear, flux_dn_lw_clear | col, half_level | Up- and down-welling clear-sky longwave fluxes           |
+| lw_derivative                      | col, half_level | Derivative of upwelling longwave flux with respect to surface value (Hogan and Bozzo, 2015) |
+| spectral_flux_dn_sw_surf           | col, band_sw    | Downwelling surface shortwave flux in each band          |
+| spectral_flux_dn_direct_sw_surf    | col, band_sw    | Direct downwelling surface shortwave flux in each band   |
+| spectral_flux_dn_sw_surf_clear     | col, band_sw    | Clear-sky downwelling surface shortwave flux in each band |
+| spectral_flux_dn_direct_sw_surf_clear | col, band_sw | Clear-sky direct downwelling surface shortwave flux in each band |
+| canopy_flux_dn_diffuse_sw_surf     | col, sw_albedo_band | Downwelling diffuse surface shortwave flux in each albedo interval |
+| canopy_flux_dn_direct_sw_surf      | col, sw_albedo_band | Downwelling direct surface shortwave flux in each albedo interval |
+| canopy_flux_dn_lw_surf             | col, lw_emiss_band  | Downwelling surface longwave flux in each emissivity interval |
+| cloud_cover_sw                     | col             | Total cloud cover diagnosed by shortwave solver          |
+| cloud_cover_lw                     | col             | Total cloud cover diagnosed by longwave solver           |
 
 <br>
 <br>
@@ -436,7 +436,7 @@ In addition to the namelist parameters described in section 2.3 an additional se
 ### 2.5 Describing Cloud Structure
 
 Probably more than any other 1D radiation scheme, *ecRad* allows the user to define in detail the statistical properties of the sub-grid cloud distribution, and in this section the relevant variables and namelist parameters are explained in more detail. In an operational context most of these variables need to be parameterized, but in developing new solvers we need to perform explicit radiation calculations on realistic high resolution 3D cloud fields, and compare them to *ecRad* simulations in which the profiles of these variables have been extracted from the 3D
-cloud fields. This has been done by Schafer et al. ¨ (2016), Hogan et al. (2016) and Hogan et al. (2019). Explicit radiation calculations on a 3D cloud field can either be performed using the Independent Column Approximation
+cloud fields. This has been done by Schafer et al. (2016), Hogan et al. (2016) and Hogan et al. (2019). Explicit radiation calculations on a 3D cloud field can either be performed using the Independent Column Approximation
 (ICA) and compared to *ecRad*'s McICA or Tripleclouds solvers, or using a fully 3D solver (e.g. Monte Carlo) and comparing it to *ecRad*'s SPARTACUS solver. Note that *ecRad* can itself perform ICA calculations on 3D cloud fields, by flattening the two horizontal dimensions of a 3D dataset into a single 'column' dimension, and using the ecRad's 'Homogeneous' solver in which any cloud is assumed to homogeneously fill each of the narrow columns
 (so cloud fraction is not used as it is implicitly taken to be 0 or 1).
 
@@ -571,7 +571,7 @@ Writing NetCDF file ecrad_meridian_default_out.nc
 ------------------------------------------------------------------------------------
 ```
 
-**Running**
+Running
 
     make test_ecckd_tc 
 
