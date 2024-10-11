@@ -135,11 +135,19 @@ where `ecrad` needs to be the full path to the *ecRad* executable, `config.nam` 
 
 The input NetCDF file contains numerous floating-point variables listed in Table 2.1. The dimensions are shown in the order that they are listed by the `ncdump` utility, with the first dimension varying slowest in the file (opposite to the Fortran convention). Most variables are stored as a function of column and level (dimensions named `col` and  `level` in Table 2.1, although the actual dimension names are ignored by *ecRad*). The `half_level` dimension corresponds to the mid-points of the levels, plus the top-of-atmosphere and surface, and so must be one more than `level`. The `level_interface` dimension excludes the top-of-atmosphere and surface so must be one less than `level`. The optional `sw_albedo_band` and `lw_emiss_band` dimensions allow for shortwave albedo and longwave emissivity to be specified in user-defined spectral intervals. Some variables can be omitted in which case default values will be used or these fields will be constructed according to `radiation_config` namelist parameters (section 2.4).
 
-<table>
-<caption>
-Table 2.1: Main variables contained in the input NetCDF file to *ecRad*. Note that some variables are not required if they are not used by the particular solver selected, for example `iseed` is only used by the McICA solver and `inv_cloud_effective_size` is only used by the SPARTACUS solver. Also, only one of `o3_mmr` and `o3_vmr` should be provided. In addition to ozone, further gases can be specified in either mass mixing ratio (suffix `_mmr`) or volume mixing ratio (suffix `_vmr`) units, where the prefixes are `co2` (carbon dioxide), `n2o` (nitrous oxide), `co` (carbon monoxide), `ch4` (methane), `o2` (molecular oxygen), `cfc11` (CFC-11), `cfc12` (CFC-12), `hcfc22` (HCFC-22), `ccl4` (carbon tetrachloride) and `no2` (nitrogen dioxide). These further trace gases may either be specified as variable in space (dimensioned `col,level`) or constant (a scalar value in the file). To override the suffix indicating volume mixing ratio (e.g. to change it to `_mole_fraction`), set the namelist variable `vmr_suffix_str` as described in Table 2.4.
-</caption>
+ <table>
+  <caption>Monthly savings</caption>
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+</table> 
 
+Table 2.1: Main variables contained in the input NetCDF file to *ecRad*. Note that some variables are not required if they are not used by the particular solver selected, for example `iseed` is only used by the McICA solver and `inv_cloud_effective_size` is only used by the SPARTACUS solver. Also, only one of `o3_mmr` and `o3_vmr` should be provided. In addition to ozone, further gases can be specified in either mass mixing ratio (suffix `_mmr`) or volume mixing ratio (suffix `_vmr`) units, where the prefixes are `co2` (carbon dioxide), `n2o` (nitrous oxide), `co` (carbon monoxide), `ch4` (methane), `o2` (molecular oxygen), `cfc11` (CFC-11), `cfc12` (CFC-12), `hcfc22` (HCFC-22), `ccl4` (carbon tetrachloride) and `no2` (nitrogen dioxide). These further trace gases may either be specified as variable in space (dimensioned `col,level`) or constant (a scalar value in the file). To override the suffix indicating volume mixing ratio (e.g. to change it to `_mole_fraction`), set the namelist variable `vmr_suffix_str` as described in Table 2.4.
 
 | Variable               | Dimensions           | Description                                                                    |
 |------------------------|----------------------|--------------------------------------------------------------------------------|
@@ -170,7 +178,6 @@ Table 2.1: Main variables contained in the input NetCDF file to *ecRad*. Note th
 | inv_cloud_effective_separation | col, level           | Alternative input to SPARTACUS if `inv_cloud_effective_size` not present (m<sup>−1</sup> )                                                          |
 | inv_inhom_effective_separation | col, level           | Alternative input to SPARTACUS if `inv_inhom_effective_size` not present (m<sup>−1</sup> )                                                          |
 
-</table>
 
 Cloud properties may be specified either via `q_liquid`, `q_ice`, `re_liquid` and `re_ice`, but to support additional hydrometeor species (e.g. rain and graupel) you should instead use `q_hydrometer` and `re_hydrometeor`.
 
