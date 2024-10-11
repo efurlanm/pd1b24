@@ -1,18 +1,20 @@
 # RRTMGP
 
-This subrepository contains my research and experiment notes on the radiation scheme for use in weather and climate models. The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model, based on:
+This subrepository contains my personal notes on research and experiments related to radiation scheme for use in weather and climate models. The work is mainly based on: 
 
-- Ukkonen, P., & Hogan, R. J. (2023). Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0. Geoscientific Model Development, 16(11), 3241–3261. <https://doi.org/10.5194/gmd-16-3241-2023>
+Ukkonen, P., & Hogan, R. J. (2023). Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0. Geoscientific Model Development, 16(11), 3241–3261. <https://doi.org/10.5194/gmd-16-3241-2023>
+
+The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model.
 
 ## Notebooks
 
-- [ukk23test01-train-r2.ipynb](ukk23test01-train-r2.ipynb) : continuation of `ukk23test01-train.ipynb`, adding more documentation, better organization, complete training, etc.
+- [ukk23test01-train-v2.ipynb](ukk23test01-train-v2.ipynb) : continuation of `ukk23test01-train.ipynb`, adding more documentation, better organization, complete training, etc.
 
-- [ukk23test01-train.ipynb](ukk23test01-train.ipynb) : generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow and Python, and Fortran routines are used to generate the training data set. The idea is to replace the RRTMGP lookup tables with NN.
+- [ukk23test01-train-v1.ipynb](ukk23test01-train-v1.ipynb) : generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow/Python for training the NN, and Fortran routines are used to generate the training dataset. 
 
 - [ecrad01-gprof.ipynb](ecrad01-gprof.ipynb) : gprof of ecrad executable from ecrad dir.
 
-- [ukk23eo01-gprof.ipynb](ukk23eo01-gprof.ipynb) : gprof of ecrad executable from ukk23eo01 dir.
+- [ukk23eo01-gprof.ipynb](ukk23eo01-gprof.ipynb) : gprof of ecrad executable from ukk23eo01 dir (optimized version of ecRad radiation scheme with new RRTMGP-NN gas optics).
 
 - [ukk23test01-rfmip-clear-sky.ipynb](ukk23test01-rfmip-clear-sky.ipynb) : runs the RFMIP-CLEAR-SKY example.
 
@@ -22,11 +24,12 @@ This subrepository contains my research and experiment notes on the radiation sc
 
 ## Files
 
-- [ecRad radiation scheme User Guide - Hogan 2022.md](ecRad radiation scheme User Guide - Hogan 2022.md) : original document converted from PDF to Markdown.
+- [ecRad radiation scheme User Guide - Hogan 2022.md](ecRad radiation scheme User Guide - Hogan 2022.md) : original document converted from PDF to Markdown:
+  - Hogan, R. J. [ecRad radiation scheme: User Guide](https://confluence.ecmwf.int/download/attachments/70945505/ecrad_documentation.pdf?version=5&modificationDate=1655480733414&api=v2). Version 1.5 (June 2022) applicable to ecRad version 1.5.x.
 
 ## Subdirectories
 
-- [ukk23test01](ukk23test01) : based on <https://zenodo.org/records/7413935> [3]
+- [ukk23test01](ukk23test01) : based on <https://zenodo.org/records/7413935> [3] (see References)
 
 - [ukk23eo01](ukk23eo01) : based on <https://github.com/peterukk/ecrad-opt>
 

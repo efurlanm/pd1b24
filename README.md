@@ -16,7 +16,7 @@ Description of some files and subdirectories. More information can be found insi
 
 - [BurgersPINN](BurgersPINN) - case study of application of PINN in solving the Burgers' Equation .
 
-- [RRTMGP](RRTMGP) - case study of application of the PIML method in the RRTMGP gas optics scheme.
+- [rrtmgp](rrtmgp) - case study of application of the PIML method in the RRTMGP gas optics scheme.
 
 - [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources.
 
