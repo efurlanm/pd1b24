@@ -135,19 +135,10 @@ where `ecrad` needs to be the full path to the *ecRad* executable, `config.nam` 
 
 The input NetCDF file contains numerous floating-point variables listed in Table 2.1. The dimensions are shown in the order that they are listed by the `ncdump` utility, with the first dimension varying slowest in the file (opposite to the Fortran convention). Most variables are stored as a function of column and level (dimensions named `col` and  `level` in Table 2.1, although the actual dimension names are ignored by *ecRad*). The `half_level` dimension corresponds to the mid-points of the levels, plus the top-of-atmosphere and surface, and so must be one more than `level`. The `level_interface` dimension excludes the top-of-atmosphere and surface so must be one less than `level`. The optional `sw_albedo_band` and `lw_emiss_band` dimensions allow for shortwave albedo and longwave emissivity to be specified in user-defined spectral intervals. Some variables can be omitted in which case default values will be used or these fields will be constructed according to `radiation_config` namelist parameters (section 2.4).
 
- <table>
-  <caption>Monthly savings</caption>
-  <tr>
-    <th>Month</th>
-    <th>Savings</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-</table> 
+ <br>
+ <br>
 
-Table 2.1: Main variables contained in the input NetCDF file to *ecRad*. Note that some variables are not required if they are not used by the particular solver selected, for example `iseed` is only used by the McICA solver and `inv_cloud_effective_size` is only used by the SPARTACUS solver. Also, only one of `o3_mmr` and `o3_vmr` should be provided. In addition to ozone, further gases can be specified in either mass mixing ratio (suffix `_mmr`) or volume mixing ratio (suffix `_vmr`) units, where the prefixes are `co2` (carbon dioxide), `n2o` (nitrous oxide), `co` (carbon monoxide), `ch4` (methane), `o2` (molecular oxygen), `cfc11` (CFC-11), `cfc12` (CFC-12), `hcfc22` (HCFC-22), `ccl4` (carbon tetrachloride) and `no2` (nitrogen dioxide). These further trace gases may either be specified as variable in space (dimensioned `col,level`) or constant (a scalar value in the file). To override the suffix indicating volume mixing ratio (e.g. to change it to `_mole_fraction`), set the namelist variable `vmr_suffix_str` as described in Table 2.4.
+*Table 2.1: Main variables contained in the input NetCDF file to *ecRad*. Note that some variables are not required if they are not used by the particular solver selected, for example `iseed` is only used by the McICA solver and `inv_cloud_effective_size` is only used by the SPARTACUS solver. Also, only one of `o3_mmr` and `o3_vmr` should be provided. In addition to ozone, further gases can be specified in either mass mixing ratio (suffix `_mmr`) or volume mixing ratio (suffix `_vmr`) units, where the prefixes are `co2` (carbon dioxide), `n2o` (nitrous oxide), `co` (carbon monoxide), `ch4` (methane), `o2` (molecular oxygen), `cfc11` (CFC-11), `cfc12` (CFC-12), `hcfc22` (HCFC-22), `ccl4` (carbon tetrachloride) and `no2` (nitrogen dioxide). These further trace gases may either be specified as variable in space (dimensioned `col,level`) or constant (a scalar value in the file). To override the suffix indicating volume mixing ratio (e.g. to change it to `_mole_fraction`), set the namelist variable `vmr_suffix_str` as described in Table 2.4.*
 
 | Variable               | Dimensions           | Description                                                                    |
 |------------------------|----------------------|--------------------------------------------------------------------------------|
@@ -178,6 +169,8 @@ Table 2.1: Main variables contained in the input NetCDF file to *ecRad*. Note th
 | inv_cloud_effective_separation | col, level           | Alternative input to SPARTACUS if `inv_cloud_effective_size` not present (m<sup>−1</sup> )                                                          |
 | inv_inhom_effective_separation | col, level           | Alternative input to SPARTACUS if `inv_inhom_effective_size` not present (m<sup>−1</sup> )                                                          |
 
+<br>
+<br>
 
 Cloud properties may be specified either via `q_liquid`, `q_ice`, `re_liquid` and `re_ice`, but to support additional hydrometeor species (e.g. rain and graupel) you should instead use `q_hydrometer` and `re_hydrometeor`.
 
@@ -189,7 +182,10 @@ All the test data in the ecRad package store input fields in order of increasing
 
 The output NetCDF file contains the typical set of variables listed in Table 2.2. Clear-sky fluxes (i.e. computed on the same input profiles but in the absence of clouds) are provided if the `do_clear` namelist parameter is set to `true` (see section 2.3). If you need diagnostic downward fluxes at the surface for just a subset of the spectrum (e.g. ultraviolet or photosynthetically active radiation) then they can be computed from the `spectral_flux_dn_*` variables, activated if namelist variable do_surface_sw_spectral_flux is set to true. In some contexts it is also useful to have fluxes in each of the shortwave albedo or longwave emissivity spectral intervals. These are named `canopy_flux_dn_*` and are activated if `do_canopy_fluxes_sw` or `do_canopy_fluxes_lw` are set to true. Note that if you want atmospheric heating rates then you will need to compute them yourself from the flux profiles.
 
-Table 2.2: Variables contained in the output NetCDF file from *ecRad*, where all fluxes (or irradiances) have units of W m<sup>−2</sup>. The `band_sw` dimension has the same size as the number of shortwave bands in the gas-optics scheme.
+<br>
+<br>
+
+*Table 2.2: Variables contained in the output NetCDF file from *ecRad*, where all fluxes (or irradiances) have units of W m<sup>−2</sup>. The `band_sw` dimension has the same size as the number of shortwave bands in the gas-optics scheme.*
 
 
 | Variable                           | Dimensions      | Description                                              |
@@ -212,11 +208,17 @@ Table 2.2: Variables contained in the output NetCDF file from *ecRad*, where all
 | cloud_cover_sw                        | col                 | Total cloud cover diagnosed by shortwave solver                                             |
 | cloud_cover_lw                        | col                 | Total cloud cover diagnosed by longwave solver                                              |
 
+<br>
+<br>
+
 ### 2.3 Configuring The Radiation Scheme
 
 The detailed settings of *ecRad* are configured using the `radiation` namelist in the namelist file provided as the first command-line argument to the `ecrad` executable. The available namelist parameters are listed in Table 2.3. One of the most important is `directory_name`, which provides the absolute or relative path to the directory containing all the configuration files. This is the `data` directory at the top level of the *ecRad* package. Note that the default values listed in Table 2.3 may differ in some cases from the values used operationally in the IFS (see Table 2 of Hogan and Bozzo, 2018).
 
-Table 2.3: Options for the `radiation` namelist that configures the radiation scheme. The type of each parameter can be inferred from its name: logicals begin with `do_` or `use_`, integers start with `i_` or `n_`, strings end with `_name`, and all other parameters are real numbers.
+<br>
+<br>
+
+*Table 2.3: Options for the `radiation` namelist that configures the radiation scheme. The type of each parameter can be inferred from its name: logicals begin with `do_` or `use_`, integers start with `i_` or `n_`, strings end with `_name`, and all other parameters are real numbers.*
 
 | Parameter                        | Default value, other values | Description                                                                                                  |
 |----------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------|
@@ -297,6 +299,8 @@ Table 2.3: Options for the `radiation` namelist that configures the radiation sc
 | do_save_radiative_properties          | false                                                     | Write intermediate NetCDF file(s) of properties sent to solver (radiative_properties*.nc)?                                                                                                    |
 | do_canopy_fluxes_sw                   | false                                                     | Save surface shortwave fluxes in each albedo interval                                                                                                                                         |
 | do_canopy_fluxes_lw                   | false                                                     | Save surface longwave fluxes in each emissivity interval                                                                                                                                      |
+<br>
+<br>
 
 Several aspects of Table 2.3 deserve further explanation, particularly those that are configured with vectors, and are covered in the following subsections.
 
@@ -383,7 +387,10 @@ These models each use a total of 64 g-points; the first uses the 13-band 'narrow
 
 In addition to the namelist parameters described in section 2.3 an additional set of parameters are available in the `radiation_config` namelist that are specific to the offline version of *ecRad* and are listed in Table 2.4. In general if these parameters are present in the namelist then they will override the corresponding variable provided in the input file.
 
-Table 2.4: Options for the `radiation_config` namelist that configures additional aspects of the offline radiation scheme. All entries must be scalars. If an override parameter is present then it need not be included in the input file. The cloud effective sizes (used by the SPARTACUS solver) may be specified for low, middle and high clouds according to the cloud layer pressure p and the surface pressure $p_0$.
+<br>
+<br>
+
+*Table 2.4: Options for the `radiation_config` namelist that configures additional aspects of the offline radiation scheme. All entries must be scalars. If an override parameter is present then it need not be included in the input file. The cloud effective sizes (used by the SPARTACUS solver) may be specified for low, middle and high clouds according to the cloud layer pressure p and the surface pressure $p_0$.*
 
 | Parameter                 | Description                                     |
 |---------------------------|-------------------------------------------------|
@@ -421,7 +428,10 @@ Table 2.4: Options for the `radiation_config` namelist that configures additiona
 | cloud_inhom_separation_factor | Set inhomogeneity separation scale to be this multiplied by cloud separation scale                                              |
 | cloud_separation_scale_surface                             | Surface cloud separation scale in pressure-dependent parameterization                                                           |
 | cloud_separation_scale_toa                                 | Top-of-atmosphere cloud separation scale in pressure-dependent parameterization                                                 |
-| cloud_separation_scale_power                               | Power in cloud separation scale parameterization                                                                                |
+| cloud_separation_scale_power                               | Power in cloud separation scale parameterization                                                                              |
+
+<br>
+<br>
 
 ### 2.5 Describing Cloud Structure
 
