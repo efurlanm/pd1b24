@@ -390,7 +390,7 @@ In addition to the namelist parameters described in section 2.3 an additional se
 <br>
 <br>
 
-*Table 2.4: Options for the `radiation_config` namelist that configures additional aspects of the offline radiation scheme. All entries must be scalars. If an override parameter is present then it need not be included in the input file. The cloud effective sizes (used by the SPARTACUS solver) may be specified for low, middle and high clouds according to the cloud layer pressure p and the surface pressure $p_0$.*
+*Table 2.4: Options for the `radiation_config` namelist that configures additional aspects of the offline radiation scheme. All entries must be scalars. If an override parameter is present then it need not be included in the input file. The cloud effective sizes (used by the SPARTACUS solver) may be specified for low, middle and high clouds according to the cloud layer pressure p and the surface pressure* $p_0$ .
 
 | Parameter                 | Description                                     |
 |---------------------------|-------------------------------------------------|
