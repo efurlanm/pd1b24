@@ -467,11 +467,7 @@ In the context of an atmospheric model, we recommend that $C_X$ is parameterized
 
 These numbers are used in the namelist in the test/ifs case. Note that the first number shown here, $C^{TOA}_X$, is valid for a model with a horizontal grid spacing of around 100 km, but this parameter was found by Fielding et al. (2020) to be dependent on horizontal grid spacing $\Delta x$ in a way that can be fitted with
 
-$C_{X}^{TOA}=1.62$
-
-$\Delta x^{0.47},$
-
-$\qquad (2.8)$
+$C_{X}^{\text{TOA}}=1.62, \Delta x^{0.47}, \qquad (2.8)$
 
 where both $C^{TOA}_X$ and $\Delta x$ are in km. The surface value of $C_X$ can be assumed to be 2.5 km for all model resolutions.
 
