@@ -443,8 +443,8 @@ $\alpha_{i+1/2}=\frac{C_{\text{max}}-C}{C_{\text{max}}-C}, \qquad (2.3)$
 
 where the combined cloud covers that would be obtained from the random and maximum overlap assumptions are 
 
-$ C_{\rm rand} = c_{i}+c_{i+1}-c_{i}c_{i+1} \ \ ; \qquad (2.3) $
-$ C_{\rm max} = \text{max}(c_{i},c_{i+1}) \ \ . \qquad (2.5) $
+$C_{\rm rand} = c_{i}+c_{i+1}-c_{i}c_{i+1} \ \ ; \qquad (2.3)$
+$C_{\rm max} = \text{max}(c_{i},c_{i+1}) \ \ . \qquad (2.5)$
 
 Alternatively, cloud overlap can be parameterized as in most atmospheric models in terms of an overlap decorrelation length as shown in Table 2.4, which implements Eq. 5 of Hogan and Illingworth (2000). In addition to describing how cloud boundaries overlap, *ecRad* needs to know how sub-grid cloud inhomogeneities are vertically correlated. This cannot be specified at each layer, but is rather specified via the namelist variable `cloud_inhom_decorr_scaling` in Table 2.3, which gives the ratio of the decorrelation lengths for cloud inhomogeneities and cloud boundaries. The default value of 0.5 was obtained from observations of ice clouds by Hogan and Illingworth (2003).
 
@@ -454,7 +454,7 @@ $L=4c(1-c)/C_S \qquad (2.6)$
 
 and to the latter via (Fielding et al., 2020)
 
-$L=4\left[c(1-c)\right]^{1/2}/C_{X} \qquad (2.7) $
+$L=4\left[c(1-c)\right]^{1/2}/C_{X} \qquad (2.7)$
 
 where c is the cloud fraction. The variables $1/C_S$ and $1/C_X$ may be specified directly in the input file as `inv_cloud_effective_size` and `inv_cloud_effective_separation`, respectively. If both are present then the former will take precedence. The reason that reciprocals are provided is that then a value of zero (corresponding to $C_S$ or $C_X$ of infinity) indicates no 3D effects are to be simulated in a particular layer. If you have a high resolution cloud scene and you wish to wish to run SPARTACUS on it then you need to compute the perimeter length from it (e.g. use a contouring function on a field containing 0 for clear sky and 1 for cloud, and then compute the length of the 0.5 contour), and knowing also cloud fraction you can invert (2.6) or (2.7).
 
@@ -467,9 +467,9 @@ In the context of an atmospheric model, we recommend that $C_X$ is parameterized
 
 These numbers are used in the namelist in the test/ifs case. Note that the first number shown here, $C^{TOA}_X$, is valid for a model with a horizontal grid spacing of around 100 km, but this parameter was found by Fielding et al. (2020) to be dependent on horizontal grid spacing $\Delta x$ in a way that can be fitted with
 
-$C_{X}^{\text{TOA}}=1.62, \Delta x^{0.47}, \qquad (2.8)$
+$C_{X}^{TOA} = 1.62 \Delta x^{0.47} , \qquad (2.8)$
 
-where both $C^{TOA}_X$ and $\Delta x$ are in km. The surface value of $C_X$ can be assumed to be 2.5 km for all model resolutions.
+where both $C_X^{TOA}$ and $\Delta x$ are in km. The surface value of $C_X$ can be assumed to be 2.5 km for all model resolutions.
 
 ### 2.6 Checking The Configuration
 
