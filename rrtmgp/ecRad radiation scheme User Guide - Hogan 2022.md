@@ -331,11 +331,11 @@ The IFS describes surface albedo in six spectral intervals. The vector `sw_albed
 
 All parameterizations for the optical properties of hydrometeors are expressed in terms of effective radius, which is assumed to be defined by:
 
-$r_{e}={\frac{3}{4}}{\frac{V}{A}}, \qquad (2.1)$
+$r_{e}={\frac{3}{4}}{\frac{V}{A}} \ , \qquad (2.1)$
 
 where *V* is the total volume of liquid or solid ice per unit volume of air, while *A* is the total projected area of the particles per unit volume of air (units m<sup>−1</sup>). For liquid and ice clouds this reduces to the familiar
 
-$r_{e,\rm liq}=\frac{3}{4}\frac{\rm LWC}{\rho_{\rm liq}A_{\rm liq}};\qquad r_{e,\rm ice}=\frac{3}{4}\frac{\rm IWC}{\rho_{\rm ice}A_{\rm ice}}, \qquad (2.2)$
+$r_{e,\rm liq}=\frac{3}{4}\frac{\rm LWC}{\rho_{\rm liq}A_{\rm liq}} \ ; \qquad r_{e,\rm ice}=\frac{3}{4}\frac{\rm IWC}{\rho_{\rm ice}A_{\rm ice}} \ , \qquad (2.2)$
 
 where LWC and IWC are the liquid and ice water content, respectively (in kg m<sup>−3</sup>, equal to the mass mixing ratio multiplied by the air density), and $\rho_\text{liq}$ and $\rho_\text{ice}$ are the densities of liquid water and solid ice. Effective radius is assumed to be horizontally constant within a gridbox, even if the water content varies.
 
@@ -348,11 +348,11 @@ These various parameterizations are still available to use with the RRTMG gas op
 
 The number of hydrometeor types (up to a maximum of 12) is taken from the number of `cloud_type_name` entries provided. *ecRad* then appends `_scattering.nc` to these strings and looks for files with these names in the data directory. These files contain look-up tables of the optical properties as a function of effective radius and wavenumber. At setup time, the optical properties are averaged to the spectral intervals used by the gas-optics scheme. In case above (and by default) only two cloud types are provided, so *ecRad* assumes the input fields `q_hydrometeor` and `re_hydrometeor` (see Table 2.1) contain two types, liquid and ice cloud. Data files are available in the data directory of the *ecRad* package to support the following optical models:
 
-- mie_droplet Cloud droplets described by Mie theory with effective radius in the range 1–50 µm;
-- mie_rain Rain drops described by Mie theory with effective radius in the range 25–3000 µm;
-- baum-general-habit-mixture_ice Ice particles using Baum's 'general habit mixture' for effective radius in the range 5–60 µm;
-- fu-muskatel_ice Unroughened ice particles using Fu's model extended to the effective radius range 3–370 µm by Harel Muskatel;
-- fu-muskatel-rough_ice As above but for roughened ice particles.
+- **mie_droplet** Cloud droplets described by Mie theory with effective radius in the range 1–50 µm;
+- **mie_rain** Rain drops described by Mie theory with effective radius in the range 25–3000 µm;
+- **baum-general-habit-mixture_ice** Ice particles using Baum's 'general habit mixture' for effective radius in the range 5–60 µm;
+- **fu-muskatel_ice** Unroughened ice particles using Fu's model extended to the effective radius range 3–370 µm by Harel Muskatel;
+- **fu-muskatel-rough_ice** As above but for roughened ice particles.
 
 Note that if the input effective radius is out of bounds, the nearest in-bound values are used.
 
@@ -385,7 +385,7 @@ In addition to the namelist parameters described in section 2.3 an additional se
 
 <br>
 
-> Table 2.4: Options for the `radiation_config` namelist that configures additional aspects of the offline radiation scheme. All entries must be scalars. If an override parameter is present then it need not be included in the input file. The cloud effective sizes (used by the SPARTACUS solver) may be specified for low, middle and high clouds according to the cloud layer pressure p and the surface pressure* $p_0$ .
+> Table 2.4: Options for the `radiation_config` namelist that configures additional aspects of the offline radiation scheme. All entries must be scalars. If an override parameter is present then it need not be included in the input file. The cloud effective sizes (used by the SPARTACUS solver) may be specified for low, middle and high clouds according to the cloud layer pressure p and the surface pressure $p_0$ .
 
 | Parameter                          | Description                                                                                                                             |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -394,7 +394,7 @@ In addition to the namelist parameters described in section 2.3 an additional se
 | istartcol                          | Start at specified input column (1 based)                                                                                               |
 | iendcol                            | End at specified input column (1 based)                                                                                                 |
 | iverbose                           | Verbosity in offline setup (default 2)                                                                                                  |
-| do_parallel                        | Use OpenMP parallelism? (default *true`)                                                                                                |
+| do_parallel                        | Use OpenMP parallelism? (default `true`)                                                                                                |
 | nblocksize                         | Number of columns per block when using OpenMP                                                                                           |
 | do_save_inputs                     | Sanity check: save input variables in `inputs.nc`                                                                                       |
 | do_save_aerosol_optics             | Output computed aerosol optical property look-up table in `aerosol_optics.nc`                                                           |
@@ -409,9 +409,9 @@ In addition to the namelist parameters described in section 2.3 an additional se
 | fractional_std                     | Override cloud optical depth fractional standard deviation                                                                              |
 | overlap_decorr_length              | Override cloud overlap decorrelation length (m)                                                                                         |
 | inv_effective_size                 | Override inverse of cloud effective size (m<sup>−1</sup> )                                                                              |
-| low_inv_effective_size             | ...for low clouds (p > 0.8p0, where p is pressure and p0 surface pressure)                                                              |
-| middle_inv_effective_size          | ...for mid-level clouds (0.45p0 < p ≤ 0.8p0)                                                                                            |
-| high_inv_effective_size            | ...for high clouds (p ≤ 0.45p0)                                                                                                         |
+| low_inv_effective_size             | ...for low clouds ($p > 0.8p_0$, where $p$ is pressure and $p_0$ surface pressure)                                                      |
+| middle_inv_effective_size          | ...for mid-level clouds ($0.45p_0 < p ≤ 0.8p_0$)                                                                                        |
+| high_inv_effective_size            | ...for high clouds ($p ≤ 0.45p_0$)                                                                                                      |
 | ***Scale input variables***        |                                                                                                                                         |
 | q_liquid_scaling                   | Scaling for liquid water mixing ratio                                                                                                   |
 | q_ice_scaling                      | Scaling for ice water mixing ratio                                                                                                      |
@@ -430,8 +430,7 @@ In addition to the namelist parameters described in section 2.3 an additional se
 
 ### 2.5 Describing Cloud Structure
 
-Probably more than any other 1D radiation scheme, *ecRad* allows the user to define in detail the statistical properties of the sub-grid cloud distribution, and in this section the relevant variables and namelist parameters are explained in more detail. In an operational context most of these variables need to be parameterized, but in developing new solvers we need to perform explicit radiation calculations on realistic high resolution 3D cloud fields, and compare them to *ecRad* simulations in which the profiles of these variables have been extracted from the 3D cloud fields. This has been done by Schafer et al. (2016), Hogan et al. (2016) and Hogan et al. (2019). Explicit radiation calculations on a 3D cloud field can either be performed using the Independent Column Approximation (ICA) and compared to *ecRad*'s McICA or Tripleclouds solvers, or using a fully 3D solver (e.g. Monte Carlo) and comparing it to *ecRad*'s SPARTACUS solver. Note that *ecRad* can itself perform ICA calculations on 3D cloud fields, by flattening the two horizontal dimensions of a 3D dataset into a single 'column' dimension, and using the ecRad's 'Homogeneous' solver in which any cloud is assumed to homogeneously fill each of the narrow columns
-(so cloud fraction is not used as it is implicitly taken to be 0 or 1).
+Probably more than any other 1D radiation scheme, *ecRad* allows the user to define in detail the statistical properties of the sub-grid cloud distribution, and in this section the relevant variables and namelist parameters are explained in more detail. In an operational context most of these variables need to be parameterized, but in developing new solvers we need to perform explicit radiation calculations on realistic high resolution 3D cloud fields, and compare them to *ecRad* simulations in which the profiles of these variables have been extracted from the 3D cloud fields. This has been done by Schafer et al. (2016), Hogan et al. (2016) and Hogan et al. (2019). Explicit radiation calculations on a 3D cloud field can either be performed using the Independent Column Approximation (ICA) and compared to *ecRad*'s McICA or Tripleclouds solvers, or using a fully 3D solver (e.g. Monte Carlo) and comparing it to *ecRad*'s SPARTACUS solver. Note that *ecRad* can itself perform ICA calculations on 3D cloud fields, by flattening the two horizontal dimensions of a 3D dataset into a single 'column' dimension, and using the ecRad's 'Homogeneous' solver in which any cloud is assumed to homogeneously fill each of the narrow columns (so cloud fraction is not used as it is implicitly taken to be 0 or 1).
 
 The input variables describing the profile of cloud properties are given in the lower half of Table 2.1. The most basic are the liquid and ice mass mixing ratios (`q_liquid` and `q_ice`), which are gridbox-mean quantities, and the corresponding effective radii (`re_liquid` and `re_ice`) defined in section 2.3.3. These may alternatively be expressed by `q_hydrometeor` and `re_hydrometeor` if more than two hydrometeor types are to be represented.
 
@@ -439,29 +438,29 @@ Cloud fraction is simply the fractional horizontal area of a given model layer t
 
 Cloud overlap is needed by the Exp-Ran and Exp-Exp overlap schemes, and is specified at the interface (or half-level) between each layer by `overlap_param`, the overlap parameter as defined by Hogan and Illingworth (2000). To compute this at half-level $i + 1/2$ of a high-resolution 3D cloud field, you need the cloud fractions in the upper and lower lower layers, $c_i$ and $c_{i+1}$, and the combined cloud cover of the cloud in these two layers, $C$. Then from Eqs. 1, 2 and 4 of Hogan and Illingworth (2000) you can compute the overlap parameter:
 
-$\alpha_{i+1/2}=\frac{C_{\text{max}}-C}{C_{\text{max}}-C}, \qquad (2.3)$
+$\alpha_{i+1/2}=\frac{C_{\text{max}}-C}{C_{\text{max}}-C} \ , \qquad (2.3)$
 
 where the combined cloud covers that would be obtained from the random and maximum overlap assumptions are 
 
 $C_{\rm rand} = c_{i}+c_{i+1}-c_{i}c_{i+1} \ \ ; \qquad (2.3)$
-$C_{\rm max} = \text{max}(c_{i},c_{i+1}) \ \ . \qquad (2.5)$
+$C_{\rm max} = \text{max}(c_{i} \ , \ c_{i+1}) \ \ . \qquad (2.5)$
 
 Alternatively, cloud overlap can be parameterized as in most atmospheric models in terms of an overlap decorrelation length as shown in Table 2.4, which implements Eq. 5 of Hogan and Illingworth (2000). In addition to describing how cloud boundaries overlap, *ecRad* needs to know how sub-grid cloud inhomogeneities are vertically correlated. This cannot be specified at each layer, but is rather specified via the namelist variable `cloud_inhom_decorr_scaling` in Table 2.3, which gives the ratio of the decorrelation lengths for cloud inhomogeneities and cloud boundaries. The default value of 0.5 was obtained from observations of ice clouds by Hogan and Illingworth (2003).
 
-The variables and parameters above are all used by the McICA and Tripleclouds solvers to represent cloud properties relevant for 1D radiative transfer. In order to use the SPARTACUS solver to represent 3D radiative effects, we also need a means to specify the *normalized cloud perimeter length, L*, in each model layer. If we imagine a horizontal slice through the sub-grid cloud field, then L is the total cloud perimeter length divided by the area of the domain, with units of inverse metres. This variable is not provided to SPARTACUS directly, since it tends to be strongly dependent on the cloud fraction. Rather we specify either the *cloud effective size, C<sub>S</sub>*, or the *cloud effective separation, C<sub>X</sub>*, which tend to be less dependent on cloud fraction. Normalized perimeter length is related to the former via Eq. 29 of Hogan et al. (2019):
+The variables and parameters above are all used by the McICA and Tripleclouds solvers to represent cloud properties relevant for 1D radiative transfer. In order to use the SPARTACUS solver to represent 3D radiative effects, we also need a means to specify the *normalized cloud perimeter length, L*, in each model layer. If we imagine a horizontal slice through the sub-grid cloud field, then L is the total cloud perimeter length divided by the area of the domain, with units of inverse metres. This variable is not provided to SPARTACUS directly, since it tends to be strongly dependent on the cloud fraction. Rather we specify either the *cloud effective size, C<sub>S</sub>* , or the *cloud effective separation, C<sub>X</sub>* , which tend to be less dependent on cloud fraction. Normalized perimeter length is related to the former via Eq. 29 of Hogan et al. (2019):
 
-$L=4c(1-c)/C_S \qquad (2.6)$
+$L=4c(1-c)/C_S \ , \qquad (2.6)$
 
 and to the latter via (Fielding et al., 2020)
 
-$L=4\left[c(1-c)\right]^{1/2}/C_{X} \qquad (2.7)$
+$L=4\left[c(1-c)\right]^{1/2}/C_{X} \ , \qquad (2.7)$
 
 where c is the cloud fraction. The variables $1/C_S$ and $1/C_X$ may be specified directly in the input file as `inv_cloud_effective_size` and `inv_cloud_effective_separation`, respectively. If both are present then the former will take precedence. The reason that reciprocals are provided is that then a value of zero (corresponding to $C_S$ or $C_X$ of infinity) indicates no 3D effects are to be simulated in a particular layer. If you have a high resolution cloud scene and you wish to wish to run SPARTACUS on it then you need to compute the perimeter length from it (e.g. use a contouring function on a field containing 0 for clear sky and 1 for cloud, and then compute the length of the 0.5 contour), and knowing also cloud fraction you can invert (2.6) or (2.7).
 
 In the context of an atmospheric model, we recommend that $C_X$ is parameterized using the namelist parameters at the bottom of Table 2.4 scheme with the values of Fielding et al. (2020):
 
-    cloud_separation_scale_toa = 14000.0,    ! Value of C_X at top-of-atmosphere (m)
-    cloud_separation_scale_surface = 2500.0, ! Value of C_X at surface (m)
+    cloud_separation_scale_toa = 14000.0,    ! Value of Cx at top-of-atmosphere (m)
+    cloud_separation_scale_surface = 2500.0, ! Value of Cx at surface (m)
     cloud_separation_scale_power = 3.5,      ! Describes pressure dependence of C_X
     cloud_inhom_separation_factor = 0.75     ! Defines size of cloud inhomogeneities
 
