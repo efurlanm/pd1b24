@@ -34,7 +34,7 @@ The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiati
   
   - "(...) the most up-to-date optimized ecRad code, see branch `clean_no_opt_testing` in this github repo (...)".
   
-  - This repository is referenced in [[3]](#R3)
+  - This repository is referenced in [[3]](#ref03)
 
 - [ecrad](ecrad) : original ecRad, without NN. Based on:
   
@@ -88,8 +88,8 @@ Peter Ukkonen. (2021). Training and evaluation data for machine learning models 
 
 ## Some references
 
-<a id="R01">[1]</a> Ukkonen, P., et al. (2022). *peterukk/rte-rrtmgp-nn: 2.0 (2.0)* . <https://doi.org/10.5281/zenodo.7413935>
+<a id="ref01"></a>[1] Ukkonen, P., et al. (2022). *peterukk/rte-rrtmgp-nn: 2.0 (2.0)* . <https://doi.org/10.5281/zenodo.7413935>
 
-<a id="R02">[2]</a> Ukkonen, P. (2022). *Code and extensive data for training neural networks for radiation, used in “Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0”*". <https://doi.org/10.5281/zenodo.7413952> (<https://zenodo.org/records/7413952>)
+<a id="ref02"></a>[2] Ukkonen, P. (2022). *Code and extensive data for training neural networks for radiation, used in “Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0”*". <https://doi.org/10.5281/zenodo.7413952> (<https://zenodo.org/records/7413952>)
 
-<a id="R03">[3]</a> Ukkonen, P. (2022). *Optimized version of the ecRad radiation scheme with new RRTMGP-NN gas optics*.  <https://doi.org/10.5281/zenodo.7852526> (<https://zenodo.org/records/7852526>)
+<a id="ref03"></a>[3] Ukkonen, P. (2022). *Optimized version of the ecRad radiation scheme with new RRTMGP-NN gas optics*.  <https://doi.org/10.5281/zenodo.7852526> (<https://zenodo.org/records/7852526>)
