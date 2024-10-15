@@ -1,10 +1,6 @@
-# RRTMGP
+# RRTMGP-NN
 
-This sub-repository contains my personal notes on research and experiments related to radiation scheme for use in weather and climate models. The work is mainly based on: 
-
-Ukkonen, P., & Hogan, R. J. (2023). *Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0*. Geoscientific Model Development, 16(11), 3241–3261. <https://doi.org/10.5194/gmd-16-3241-2023>
-
-The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model.
+This sub-repository contains my personal notes on research and experiments related to radiation scheme for use in weather and climate models. The work is mainly based on Ukkonen & Hogan (2023). The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model.
 
 ## Notebooks
 
@@ -24,19 +20,20 @@ The main idea is to replace the [RRTMGP](https://github.com/earth-system-radiati
 
 ## Directories
 
-- [ukk23test01](ukk23test01) : my working directory contains `/examples/rrtmgp-nn-training` with the implementation for training gas optics neural networks. Based on:
+- [`ukk23test01`](ukk23test01) : my working directory. Contains the sub-dir `/examples/rrtmgp-nn-training` with the implementation for training gas optics NN. Based on:
   
-  - Ukkonen, P., et al. (2022). *peterukk/rte-rrtmgp-nn: 2.0 (2.0)* . <https://zenodo.org/records/7413935> 
+  - Ukkonen, P., et al. (2022) [[1]](#ref01). *peterukk/rte-rrtmgp-nn: 2.0 (2.0)* . <https://zenodo.org/records/7413935> 
+    - Corresponding to the article (Ukkonen, 2023) describing the implementation of RRTMGP-NN in ecRad, and prognostic tests in IFS.
 
-- [ukk23eo01](ukk23eo01) : optimized version of the ecRad radiation scheme, containing the new RRTMGP-NN gas optics. Does not contain the implementation that does the NN training using TensorFlow/Python. Based on:
+- [`ukk23eo01`](ukk23eo01) : my working directory. Contains the optimized version of the ecRad radiation scheme, with the new RRTMGP-NN gas optics. Does not contain the implementation that does the NN training. Based on:
   
   - <https://github.com/peterukk/ecrad-opt>
   
   - "(...) the most up-to-date optimized ecRad code, see branch `clean_no_opt_testing` in this github repo (...)".
   
-  - This repository is referenced in [[3]](#ref03)
+  - This repository is referenced in [[3]](#ref03).
 
-- [ecrad](ecrad) : original ecRad, without NN. Based on:
+- [`ecrad`](ecrad) : original ecRad repo, without NN. Based on:
   
   - <https://github.com/ecmwf-ifs/ecrad>
 
@@ -66,18 +63,18 @@ Description:
 The repositories in <https://github.com/peterukk> contain code and also some data ( distributed across different repo branches). The RTE+RRTMGP-NN is available on:
 
 - <https://github.com/peterukk/rte-rrtmgp-nn> (see also the repo branches)
-- <https://doi.org/10.5281/zenodo.7413935> (Ukkonen, 2022) [1]
+- <https://doi.org/10.5281/zenodo.7413935> (Ukkonen, 2022) [[1]](#ref01)
   - Redirects to: <https://zenodo.org/records/7413935> [code]. "peterukk/rte-rrtmgp-nn: 2.0".
 * The Fortran programs and Python scripts used for data generation and model training are found in the directory `examples/rrtmgp-nn-training` .
 
 The training data and archived version of RTE+RRTMGP-NN 2.0 with its training scripts can be accessed at
 
-- <https://doi.org/10.5281/zenodo.6576680> (Ukkonen, 2022) [2]
+- <https://doi.org/10.5281/zenodo.6576680> (Ukkonen, 2022) [[2]](#ref02)
   - Redirects to: <https://zenodo.org/records/7413952> [code and data].  "Code and extensive data for training neural networks for radiation, used in "Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0" ".
 
 The optimized version of the ecRad radiation scheme integrated with RRTMGP-NN 2.0 can be accessed at
 
-- <https://doi.org/10.5281/zenodo.7148329> (Ukkonen, 2022) [3]
+- <https://doi.org/10.5281/zenodo.7148329> (Ukkonen, 2022) [[3]](#ref03)
   - Redirects to: <https://zenodo.org/records/7852526> [code]. "Optimized version of the ecRad radiation scheme with new RRTMGP-NN gas optics.".
 
 Peter Ukkonen. (2021). Training and evaluation data for machine learning models emulating the RTE+RRTMGP radiation scheme or its components. 
@@ -88,8 +85,10 @@ Peter Ukkonen. (2021). Training and evaluation data for machine learning models 
 
 ## Some references
 
-<a id="ref01"></a>[1] Ukkonen, P., et al. (2022). *peterukk/rte-rrtmgp-nn: 2.0 (2.0)* . <https://doi.org/10.5281/zenodo.7413935>
+<a id="ref01">[1]</a> Ukkonen, P., et al. (2022). *peterukk/rte-rrtmgp-nn: 2.0 (2.0)* . <https://doi.org/10.5281/zenodo.7413935>
 
-<a id="ref02"></a>[2] Ukkonen, P. (2022). *Code and extensive data for training neural networks for radiation, used in “Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0”*". <https://doi.org/10.5281/zenodo.7413952> (<https://zenodo.org/records/7413952>)
+<a id="ref02">[2]</a> Ukkonen, P. (2022). *Code and extensive data for training neural networks for radiation, used in “Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0”* ". <https://doi.org/10.5281/zenodo.7413952> (<https://zenodo.org/records/7413952>)
 
-<a id="ref03"></a>[3] Ukkonen, P. (2022). *Optimized version of the ecRad radiation scheme with new RRTMGP-NN gas optics*.  <https://doi.org/10.5281/zenodo.7852526> (<https://zenodo.org/records/7852526>)
+<a id="ref03">[3]</a> Ukkonen, P. (2022). *Optimized version of the ecRad radiation scheme with new RRTMGP-NN gas optics*.  <https://doi.org/10.5281/zenodo.7852526> (<https://zenodo.org/records/7852526>)
+
+<a id="ref03">[4]</a> Ukkonen, P., & Hogan, R. J. (2023). *Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0*. Geoscientific Model Development, 16(11), 3241–3261. https://doi.org/10.5194/gmd-16-3241-2023
