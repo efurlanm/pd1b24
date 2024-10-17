@@ -20,19 +20,17 @@ This sub-repository contains my personal notes on research, and experiments rela
 
 ## Directories
 
-- [ukk23test01](ukk23test01) : my tests directory. Contains the sub-dir /examples/rrtmgp-nn-training with the implementation for training gas optics NN. Based on [[1]](#ref01) .
+- [ukk23test01](ukk23test01) : my tests directory. Contains the sub-dir `/examples/rrtmgp-nn-training` with the implementation for training gas optics NN. Based on [[1]](#ref01) .
   
-  - Files corresponding to the article (Ukkonen, 2023) describing the implementation of RRTMGP-NN in ecRad, and prognostic tests in IFS.
+  - Files corresponding to the paper (Ukkonen, 2023) describing the implementation of RRTMGP-NN in ecRad.
 
-- [ukk23eo01](ukk23eo01) : my tests directory. Contains the optimized version of the ecRad radiation scheme, with the new RRTMGP-NN gas optics. Does not contain the implementation that does the NN training. Based on
+- [ukk23eo01](ukk23eo01) : my tests directory. Contains the optimized version of the ecRad radiation scheme, with the new RRTMGP-NN gas optics. Does not contain the implementation that does the NN training. Based on:
   
   - <https://github.com/peterukk/ecrad-opt>
-  
-  - "(...) the most up-to-date optimized ecRad code, see branch `clean_no_opt_testing` in this github repo (...)" .
-  
-  - The repository is referenced in [[3]](#ref03) .
+    
+    - "(...) the most up-to-date optimized ecRad code, see branch `clean_no_opt_testing` in this github repo (...)" .
 
-- [ecrad](ecrad) : original ecRad repo, without NN. Based on
+- [ecrad](ecrad) : original ecRad repo, without NN. Based on:
   
   - <https://github.com/ecmwf-ifs/ecrad>
 
@@ -62,8 +60,6 @@ Due to size restrictions, the data is not present in this repository and must be
 
 - <https://github.com/peterukk/rte-rrtmgp-nn>
 
-Description:
-
 The repositories in <https://github.com/peterukk> contain code and also some data (distributed across different repo branches). The RTE+RRTMGP-NN is available on
 
 - <https://github.com/peterukk/rte-rrtmgp-nn> (see also the repo branches).
@@ -92,9 +88,9 @@ Ukkonen (2021) training and evaluation data for machine learning models emulatin
   
   - Redirects to: <https://zenodo.org/records/5833494> . "Training and evaluation data for machine learning models emulating the RTE+RRTMGP radiation scheme or its components." .
 
-Ukkonen (2020) code and data for the article [[5]](#ref05). Supplementary Python code and data used to train NN.
+Ukkonen (2020) code and data for the paper [[5]](#ref05). Supplementary Python code and data used to train NN.
 
--  <https://zenodo.org/records/4030436>
+- <https://zenodo.org/records/4030436>
 
 ## Notes
 
@@ -123,12 +119,16 @@ Ukkonen (2020) code and data for the article [[5]](#ref05). Supplementary Python
 - <https://doi.org/10.5281/zenodo.7852526> (redirects to <https://zenodo.org/records/7852526>)
 - Code: <https://github.com/peterukk/ecrad-opt/tree/clean_no_opt_testing>
 
-<a id="ref04">[4]</a> Ukkonen, P., & Hogan, R. J. (2023). *Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0*. Geoscientific Model Development, 16(11), 3241–3261. (main article)
+<a id="ref04">[4]</a> Ukkonen, P., & Hogan, R. J. (2023). *Implementation of a machine-learned gas optics parameterization in the ECMWF Integrated Forecasting System: RRTMGP-NN 2.0*. Geoscientific Model Development, 16(11), 3241–3261. (main paper)
 
-- <https://doi.org/10.5194/gmd-16-3241-2023> (redirects to <https://gmd.copernicus.org/articles/16/3241/2023>)
+- <https://doi.org/10.5194/gmd-16-3241-2023> (redirects to <https://gmd.copernicus.org/papers/16/3241/2023>)
 
 [5] Ukkonen, P., Pincus, R., Hogan, R. J., Pagh Nielsen, K., & Kaas, E. (2020). *Accelerating Radiation Computations for Dynamical Models With Targeted Machine Learning and Code Optimization*. Journal of Advances in Modeling Earth Systems, 12(12), e2020MS002226.
 
 - https://doi.org/10.1029/2020MS002226 (redirects to https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020MS002226)
 - <https://zenodo.org/records/4030436> (supplementary Python code and data used to train NN)
-- https://zenodo.org/records/4029138 (RRTMGP-NN 2020 code and data). Is supplement to <https://github.com/peterukk/rte-rrtmgp-nn/tree/0.9>.
+- https://zenodo.org/records/4029138 (RRTMGP-NN 2020 code and data. Is supplement to <https://github.com/peterukk/rte-rrtmgp-nn/tree/0.9>)
+
+[6] Pincus, R., Mlawer, E. J., & Delamere, J. S. (2019). Balancing Accuracy, Efficiency, and Flexibility in Radiation Calculations for Dynamical Models. *Journal of Advances in Modeling Earth Systems*, *11*(10), 3074–3089. https://doi.org/10.1029/2019MS001621
+
+- <https://github.com/RobertPincus/rte-rrtmgp> 

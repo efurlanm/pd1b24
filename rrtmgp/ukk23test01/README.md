@@ -1,8 +1,9 @@
-# RTE+RRTMGP-NN is an accelerated version of RTE+RRTMGP using neural networks for the gas optics, and a refactored radiative transfer solver 
+# RTE+RRTMGP-NN is an accelerated version of RTE+RRTMGP using neural networks for the gas optics, and a refactored radiative transfer solver
 
 ## Recent changes
 
 Dec 2022: "Official 2.0 release" corresponding to submitted GMD (previously a JAMES preprint earlier in the year) article describing RRTMGP-NN implementation in ecRad and prognostic testing in the IFS. I make no claims on code maturity/usability but some useful new methods for training more accurate gas optics neural networks are demonstrated in /examples/rrtmgp-nn-training:
+
 - Monitor flux errors with respect to LBL solution (RFMIP data) while training, by calling radiation scheme with models as they are being trained, and early stop on those
 - hybrid loss function to minimize the error in the difference in outputs y associated with different perturbation experiments (proxy for radiative forcing errors)
 
@@ -30,13 +31,14 @@ June 2020: RTE+RRTMGP-NN is now fully usable for the long-wave and a paper has b
 
 Clear-sky timings: 
 
-<img src="https://github.com/peterukk/rte-rrtmgp-nn/blob/master/figures/figure_timings.png" width=60% height=60%>
+<img src="figures/figure_timings.png" width=60% height=60%>
 
 **Accuracy**: The errors in fluxes and heating rates are very similar to the original scheme in evaluation using RFMIP (below) and GCM profiles, as well as the [CKDMIP evaluation](https://confluence.ecmwf.int/display/CKDMIP/CKDMIP%3A+Correlated+K-Distribution+Model+Intercomparison+Project+Home). 
 
-<img src="https://github.com/peterukk/rte-rrtmgp-nn/blob/master/figures/figure_heatingrates.png" width=50% height=50%>
+<img src="figures/figure_heatingrates.png" width=50% height=50%>
 
-## Building the libraries + clear-sky example 
+## Building the libraries + clear-sky example
+
 The code should work very similarly to the end-user as the original, but a BLAS library is required. The neural network models reside in ASCII files and are provided via an optional argument to the RRTMGP interface. [For instructions see examples/rfmip-clear-sky](https://github.com/peterukk/rte-rrtmgp-nn/tree/master/examples/rfmip-clear-sky).
 
 **to-do**
@@ -48,7 +50,9 @@ The code should work very similarly to the end-user as the original, but a BLAS 
 - [x] fix cloud optics extension
 - [ ] post-processing (scaling) coefficients should perhaps be integrated into neural-fortran and loaded from the same files as the model weights
 
-------------
+<hr style="height:20px;border-width:0;background-color:blue">
+
+> 20241017 As far as I can tell, the following is from the original repository on which this is based.
 
 # original RTE+RRTMGP
 
@@ -68,7 +72,6 @@ Example programs and documentation are evolving - please see examples/ in the re
 4. A new module, `mo_rte_config`, contains two logical variables that indicate whether arguments to routines are to be checked for correct extents and/or valid values. These variables can be changed via calls to `rte_config_checks()`. Setting the values to `.false.` removes the checks. Invalid values may cause incorrect results, crashes, or other mayhem
 
 Relative to commit `69d36c9` to `master` on Apr 20, 2020, the required arguments to both the longwave and shortwave versions of `ty_gas_optics_rrtmgp%load()`have changed.
-
 
 ## Building the libraries.
 
