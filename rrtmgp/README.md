@@ -26,7 +26,7 @@ This (sub)repository contains my personal notes on research, and experiments rel
   
   - Files corresponding to the paper (Ukkonen, 2023) describing the implementation of RRTMGP-NN in ecRad.
 
-- [ukk23eo01](ukk23eo01) : my tests directory. Contains the optimized version of the ecRad radiation scheme, with the new RRTMGP-NN gas optics. Does not contain the implementation that does the NN training. Based on:
+- [ukk23eo01](ukk23eo01) : my tests directory. Contains the optimized version of the ecRad radiation scheme, with the new RRTMGP-NN gas optics (similar to ukk23test01). Does not contain the implementation that does the NN training. Based on:
   
   - <https://github.com/peterukk/ecrad-opt>
     

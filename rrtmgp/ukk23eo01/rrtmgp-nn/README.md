@@ -1,6 +1,7 @@
-# RTE+RRTMGP-NN is an accelerated version of RTE+RRTMGP using neural networks for the gas optics, and a refactored radiative transfer solver 
+# RTE+RRTMGP-NN is an accelerated version of RTE+RRTMGP using neural networks for the gas optics, and a refactored radiative transfer solver
 
 ## Recent changes
+
 January 2021: Use of two source functions (one for layers and one for levels) instead of three (one for layers and two for levels) like in RRTMGP. This had no significant accuracy loss and is faster. RRTMGP(-NN) also now computes the full spectral source functions instead of band-wise sources and finishing the computations in RTE (this was about as fast as the current source implementation, but clunky)
 
 December 2020: A paper on RTE-RRTMGP-NN has been [published in JAMES](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020MS002226). 
@@ -27,7 +28,8 @@ Clear-sky timings:
 
 <img src="https://github.com/peterukk/rte-rrtmgp-nn/blob/master/figures/figure_heatingrates.png" width=50% height=50%>
 
-## Building the libraries + clear-sky example 
+## Building the libraries + clear-sky example
+
 The code should work very similarly to the end-user as the original, but a BLAS library is required. The neural network models reside in ASCII files and are provided via an optional argument to the RRTMGP interface. [For instructions see examples/rfmip-clear-sky](https://github.com/peterukk/rte-rrtmgp-nn/tree/master/examples/rfmip-clear-sky).
 
 **to-do**
@@ -59,7 +61,6 @@ Example programs and documentation are evolving - please see examples/ in the re
 4. A new module, `mo_rte_config`, contains two logical variables that indicate whether arguments to routines are to be checked for correct extents and/or valid values. These variables can be changed via calls to `rte_config_checks()`. Setting the values to `.false.` removes the checks. Invalid values may cause incorrect results, crashes, or other mayhem
 
 Relative to commit `69d36c9` to `master` on Apr 20, 2020, the required arguments to both the longwave and shortwave versions of `ty_gas_optics_rrtmgp%load()`have changed.
-
 
 ## Building the libraries.
 

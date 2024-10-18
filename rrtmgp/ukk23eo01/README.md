@@ -9,18 +9,16 @@ Robin Hogan <r.j.hogan@ecmwf.int>
 This branch by Peter Ukkonen (<peterukk@gmail.com>) features:
 
 1. Extensive code optimization described in a [preprint uploaded to ESS](https://doi.org/10.22541/essoar.168298700.07329865/v1).
-This branch has been cleaned up and uses optimized code everywhere (no testable optimizations)
-For further speed-up for 32-term ecCKD models add `NG_SW=32 NG_LW=32`
+   This branch has been cleaned up and uses optimized code everywhere (no testable optimizations)
+   For further speed-up for 32-term ecCKD models add `NG_SW=32 NG_LW=32`
 2. New gas optics schemes RRTMGP and RRTMGP-NN. 
-The implementation, development and testing of RRTMGP-NN is described 
-in [a GMD paper](https://doi.org/10.5194/egusphere-2022-1047).
+   The implementation, development and testing of RRTMGP-NN is described 
+   in [a GMD paper](https://doi.org/10.5194/egusphere-2022-1047).
 
 ----------------------------------------------------------------------
 
 For more complete information about compilation and usage of ecRad,
-please see the documentation on the
-[ecRad web site](https://confluence.ecmwf.int/display/ECRAD).
-
+please see the documentation on the [ecRad web site](https://confluence.ecmwf.int/display/ECRAD).
 
 ## INTRODUCTION
 
@@ -36,44 +34,43 @@ parallelized using OpenMP.
 Five solvers are currently available:
 
 1. The Monte Carlo Independent Column Approximation (McICA) of Pincus
-et al. (2003). This is is a now widely used method for treating cloud
-structure efficiently. The implementation in this package is more
-efficient than the one currently operational in the ECMWF model, and
-produces less noise in partially cloudy situations. Note that since
-McICA is stocastic, individual flux profiles using McICA may differ
-simply due to random variations in the sampling of the cloud field.
+   et al. (2003). This is is a now widely used method for treating cloud
+   structure efficiently. The implementation in this package is more
+   efficient than the one currently operational in the ECMWF model, and
+   produces less noise in partially cloudy situations. Note that since
+   McICA is stocastic, individual flux profiles using McICA may differ
+   simply due to random variations in the sampling of the cloud field.
 
 2. The Tripleclouds scheme of Shonk and Hogan (2008). This represents
-cloud structure by dividing each layer into three regions, one clear
-and two cloudy with different optical depth. It is somewhat slower
-than McICA but does not generate noise.
+   cloud structure by dividing each layer into three regions, one clear
+   and two cloudy with different optical depth. It is somewhat slower
+   than McICA but does not generate noise.
 
 3. The Speedy Algorithm for Radiative Transfer through Cloud Sides
-(SPARTACUS) of Hogan et al. (JGR 2016). This is a method for
-efficiently treating 3D radiative effects associated with clouds. It
-uses the same differential equations proposed by Hogan and Shonk (JAS
-2013), but solves them using a matrix exponential method that is much
-more elegant than their method, and is also here extended to the
-longwave (see Schaefer et al., JGR 2016).  It also incorporates the
-Tripleclouds methodology of Shonk and Hogan (2008) to represent cloud
-inhomogeneity.
+   (SPARTACUS) of Hogan et al. (JGR 2016). This is a method for
+   efficiently treating 3D radiative effects associated with clouds. It
+   uses the same differential equations proposed by Hogan and Shonk (JAS
+   2013), but solves them using a matrix exponential method that is much
+   more elegant than their method, and is also here extended to the
+   longwave (see Schaefer et al., JGR 2016).  It also incorporates the
+   Tripleclouds methodology of Shonk and Hogan (2008) to represent cloud
+   inhomogeneity.
 
 4. A homogeneous (plane parallel) solver in which clouds are assumed
-to fill the gridbox horizontally.  This is useful for computing
-Independent Column Approximation benchmarks.
+   to fill the gridbox horizontally.  This is useful for computing
+   Independent Column Approximation benchmarks.
 
 5. A "cloudless" solver if your focus is on clear skies.
 
 Two gas optics models are available:
 
 1. The Rapid Radiative Transfer Model for GCMs (RRTMG), the
-implementation being that from the ECMWF Integrated Forecasting System
-(IFS).
+   implementation being that from the ECMWF Integrated Forecasting System
+   (IFS).
 
 2. The ECMWF Correlated k-Distribution (ecCKD) scheme (since ecRad
-1.5), which uses a flexible discretization of the spectrum that is
-read from a file at run-time.
-
+   1.5), which uses a flexible discretization of the spectrum that is
+   read from a file at run-time.
 
 ## PACKAGE OVERVIEW
 
@@ -86,6 +83,7 @@ The subdirectories are as follows:
 - `ifsrrtm` - the IFS implementation of the RRTMG gas optics scheme
 
 - `utilities` - source code for useful utilities, such as reading netCDF
+  
        files
 
 - `drhook` - dummy version of the Dr Hook profiling system
@@ -93,6 +91,7 @@ The subdirectories are as follows:
 - `driver` - the source code for the offline driver program
 
 - `ifs` - slightly modified source files from the IFS that are used to provide inputs to
+  
         ecRad, but not used in this offline version except if you compile the ecrad_ifs_driver executable
 
 - `mod` - where Fortran module files are written
@@ -109,19 +108,18 @@ The subdirectories are as follows:
 
 - `practical` - exercises to get started with ecRad 
 
-
 ## TO COMPILE
 
 1. Ensure you have a reasonably recent Fortran compiler - it needs to
-support modules with `contains` and `procedure` statements for
-example.  Ensure you have the Fortran netCDF library installed
-(versions 3 or 4) and that the module file is compatible with your
-Fortran compiler.
+   support modules with `contains` and `procedure` statements for
+   example.  Ensure you have the Fortran netCDF library installed
+   (versions 3 or 4) and that the module file is compatible with your
+   Fortran compiler.
 
 2. You can compile the code using 
-
+   
        make PROFILE=<prof>
-
+   
    where `<prof>` is one of `gfortran`, `pgi`, `cray` or `intel`.
    This will read the system-specific configurations from the file
    `Makefile_include.<prof>`.  If you omit the `PROFILE=` option then
@@ -151,7 +149,6 @@ Fortran compiler.
    `FIATDIR=/path/to/fiat` to the `make` command line, such that the
    files `$FIATDIR/lib/libfiat.so` and
    `$FIATDIR/module/fiat/yomhook.mod` can be found at build time.
-   
 
 ## TO TEST
 
@@ -204,7 +201,6 @@ can be stored in `radiative_properties.nc` (edit the config namelist to
 enable this), but note that the g-points have been reordered in
 approximate order of optical depth if the SPARTACUS solver is chosen.
 
-
 ## LICENCE
 
 (C) Copyright 2014- ECMWF.
@@ -223,46 +219,44 @@ the gas optics part of the Rapid Radiative Transfer Model for GCMS
 (AER), Inc., Lexington, Massachusetts and is available under the
 "3-clause BSD" license; for details, see ifsrrtm/AER-BSD3-LICENSE.
 
-
 ## PUBLICATIONS
 
 The ecRad radiation scheme itself is described here:
 
- - Hogan, R. J., and A. Bozzo, 2018: A flexible and efficient radiation
-scheme for the ECMWF model.  J. Adv. Modeling Earth Syst., 10, 1990-2008,
-doi:10.1029/2018MS001364.
+- Hogan, R. J., and A. Bozzo, 2018: A flexible and efficient radiation
+  scheme for the ECMWF model.  J. Adv. Modeling Earth Syst., 10, 1990-2008,
+  doi:10.1029/2018MS001364.
 
- - Hogan, R. J., and A. Bozzo, 2016: ECRAD: A new radiation scheme for
-the IFS. ECMWF Technical Memorandum number 787, 35pp:
-http://www.ecmwf.int/en/elibrary/16901-ecrad-new-radiation-scheme-ifs
+- Hogan, R. J., and A. Bozzo, 2016: ECRAD: A new radiation scheme for
+  the IFS. ECMWF Technical Memorandum number 787, 35pp:
+  http://www.ecmwf.int/en/elibrary/16901-ecrad-new-radiation-scheme-ifs
 
 A two-part paper is published in Journal of Geophysics Research
 describing the SPARTACUS technique:
 
- - Schäfer, S. A. K., R. J. Hogan, C. Klinger, J.-C. Chiu and B. Mayer,
-2016: Representing 3D cloud-radiation effects in two-stream schemes: 1. Longwave considerations and effective cloud edge length.
-J. Geophys. Res., 121, 8567-8582.
-http://www.met.reading.ac.uk/~swrhgnrj/publications/spartacus_part1.pdf
+- Schäfer, S. A. K., R. J. Hogan, C. Klinger, J.-C. Chiu and B. Mayer,
+  2016: Representing 3D cloud-radiation effects in two-stream schemes: 1. Longwave considerations and effective cloud edge length.
+  J. Geophys. Res., 121, 8567-8582.
+  http://www.met.reading.ac.uk/~swrhgnrj/publications/spartacus_part1.pdf
 
- - Hogan, R. J., S. A. K. Schäfer, C. Klinger, J.-C. Chiu and B. Mayer,
-2016: Representing 3D cloud-radiation effects in two-stream schemes: 2. Matrix formulation and broadband evaluation. J. Geophys. Res., 121,
-8583-8599.
-http://www.met.reading.ac.uk/~swrhgnrj/publications/spartacus_part2.pdf
+- Hogan, R. J., S. A. K. Schäfer, C. Klinger, J.-C. Chiu and B. Mayer,
+  2016: Representing 3D cloud-radiation effects in two-stream schemes: 2. Matrix formulation and broadband evaluation. J. Geophys. Res., 121,
+  8583-8599.
+  http://www.met.reading.ac.uk/~swrhgnrj/publications/spartacus_part2.pdf
 
 More recent developments on the shortwave SPARTACUS solver, available
 since ecRad 1.1.10, are described here:
 
- - Hogan, R. J., M. D. Fielding, H. W. Barker, N. Villefranque and
-S. A. K. Schäfer, 2019: Entrapment: An important mechanism to explain
-the shortwave 3D radiative effect of clouds. J. Atmos. Sci., 76,
-2123–2141.
+- Hogan, R. J., M. D. Fielding, H. W. Barker, N. Villefranque and
+  S. A. K. Schäfer, 2019: Entrapment: An important mechanism to explain
+  the shortwave 3D radiative effect of clouds. J. Atmos. Sci., 76,
+  2123–2141.
 
 The ecCKD gas optics scheme is described here:
 
- - Hogan, R. J., and M. Matricardi, 2022: a tool for generating fast
-k-distribution gas-optics models for weather and climate
-applications. J. Adv. Modeling Earth Sys., in review.
-
+- Hogan, R. J., and M. Matricardi, 2022: a tool for generating fast
+  k-distribution gas-optics models for weather and climate
+  applications. J. Adv. Modeling Earth Sys., in review.
 
 ## CONTACT
 
