@@ -1,18 +1,20 @@
 # RRTMGP-NN
 
-This sub-repository contains my personal notes on research, and experiments related to radiation scheme for use in weather and climate models. The work is mainly based on Ukkonen & Hogan (2023) [[4]](#ref04). The main idea of ​​the research is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model.
+*Last edited: 2024-10-17*
+
+This (sub)repository contains my personal notes on research, and experiments related to radiation scheme for use in weather and climate models. The work is mainly based on Ukkonen & Hogan (2023) [[4]](#ref04). The main idea of ​​the research is to replace the [RRTMGP](https://github.com/earth-system-radiation/rte-rrtmgp) lookup table with a PIML model.
 
 ## Notebooks
 
-- [ukk23test01-train-v2.ipynb](ukk23test01-train-v2.ipynb) : continuation of `ukk23test01-train.ipynb`, adding more documentation, better organization, complete training, etc.
+- [ukk23test01-train-v2.ipynb](ukk23test01-train-v2.ipynb) : continuation of `ukk23test01-train-v1.ipynb`, adding more documentation, better organization, complete training, etc.
 
-- [ukk23test01-train-v1.ipynb](ukk23test01-train-v1.ipynb) : generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow/Python for training the NN, and Fortran routines are used to generate the training dataset. 
+- [ukk23test01-train-v1.ipynb](ukk23test01-train-v1.ipynb) : generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow/Python for training the NN, and Fortran routines are used to generate the training dataset. Based on [[1]](#ref01).
+
+- [ukk23test01-rfmip-clear-sky.ipynb](ukk23test01-rfmip-clear-sky.ipynb) : runs the RFMIP-CLEAR-SKY example, described in [[1]](#ref01).
 
 - [ecrad01-gprof.ipynb](ecrad01-gprof.ipynb) : gprof of ecrad executable from ecrad dir.
 
 - [ukk23eo01-gprof.ipynb](ukk23eo01-gprof.ipynb) : gprof of ecrad executable from ukk23eo01 dir (optimized version of ecRad radiation scheme with new RRTMGP-NN gas optics).
-
-- [ukk23test01-rfmip-clear-sky.ipynb](ukk23test01-rfmip-clear-sky.ipynb) : runs the RFMIP-CLEAR-SKY example.
 
 - [ecrad-01-sd-v240823.ipynb](ecrad-01-sd-v240823.ipynb) : shows the original ecRad radiation module using conventional numerical method, running on SDumont. (a work in progress)
 
@@ -42,7 +44,7 @@ This sub-repository contains my personal notes on research, and experiments rela
 
 - `*.txt` and `*.yml` are auxiliary files.
 
-- `*.nc` files are of the NetCDF4 type, and their structure can be viewed using the [ToolsUI](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/reading_cdm.html) .
+- `*.nc` files are of type NetCDF4 and can be browsed and their structure visualized using the Java tool [ToolsUI](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/reading_cdm.html) or the Python library [netcdf4-python](https://github.com/Unidata/netcdf4-python).
 
 ## Code and data
 

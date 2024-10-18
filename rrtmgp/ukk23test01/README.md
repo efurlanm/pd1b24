@@ -50,9 +50,9 @@ The code should work very similarly to the end-user as the original, but a BLAS 
 - [x] fix cloud optics extension
 - [ ] post-processing (scaling) coefficients should perhaps be integrated into neural-fortran and loaded from the same files as the model weights
 
-<hr style="height:20px;border-width:0;background-color:blue">
+---
 
-> 20241017 As far as I can tell, the following is from the original repository on which this is based.
+> 20241017: As far as I can tell, the following is from the original repository on which this is based.
 
 # original RTE+RRTMGP
 
