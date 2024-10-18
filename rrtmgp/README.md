@@ -20,6 +20,8 @@ This (sub)repository contains my personal notes on research, and experiments rel
 
 - [ukk23test01-train-sd-v240823.ipynb](ukk23test01-train-sd-v240823.ipynb) : DNN network training for the optical gas radiation problem, running on SDumont. (a work in progress)
 
+- [rrtmgp_rfmip_lw.ipynb](rrtmgp_rfmip_lw.ipynb) : Example program to demonstrate the calculation of longwave radiative fluxes in clear, aerosol-free skies. Based on ´rfmip-clear-sky/rrtmgp_rfmip_lw.F90`.
+
 ## Directories
 
 - [ukk23test01](ukk23test01) : my tests directory. Contains the sub-dir `/examples/rrtmgp-nn-training` with the implementation for training gas optics NN. Based on [[1]](#ref01) .

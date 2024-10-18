@@ -3,37 +3,42 @@
 # KDIST_SW=rrtmgp-data-sw-g224-2018-12-04.nc
 KDIST_LW=rrtmgp-data-lw-g128-210809.nc
 KDIST_SW=rrtmgp-data-sw-g112-210809.nc
-BLOCKSIZE = 36
 
+BLOCKSIZE = 36
+#
 # Here set variables RRTMGP_BUILD, NCHOME, NFHOME, TIME_DIR (for GPTL)
 # and link against BLAS library, or have those variables set in the
 # environment
-
+#
 RRTMGP_ROOT=../../
 $(info VAR="$(RRTMGP_ROOT)")
 RRTMGP_BUILD=$(RRTMGP_ROOT)/build
 -include $(RRTMGP_BUILD)/Makefile.conf
-
+#
 # RRTMGP library, module files
-
+#
 LDFLAGS   += -L$(RRTMGP_BUILD)
 LIBS      += -lrrtmgp -lrte -lneural
 FCINCLUDE += -I$(RRTMGP_BUILD)
 
+#
 # netcdf library, module files
 # C and Fortran interfaces respectively
-
+#
 FCINCLUDE += -I$(NFHOME)/include
 LDFLAGS   += -L$(NFHOME)/lib -L$(NCHOME)/lib
 LIBS      += -lnetcdff -lnetcdf
 
-# -------- BLAS lbirary: required for RRTMGP-NN -------- 
-# Choose BLAS library: e.g. "blis", "openblas", "mkl".
+# 
+# -------- BLAS lbirary: required for RRTMGP-NN --------
+# 
+# Choose BLAS library: e.g. "blis", "openblas", "mkl"
+
 # Here we use BLIS (https://github.com/flame/blis) which is one of the
 # fastest BLAS libraries available (on Intel platforms MKL is probably
-# faster). The flags BLAS_DIR and BLASLIB can be specified in
+# faster). the flags BLAS_DIR and BLASLIB can be specified in
 # Makefile.conf or the environment Depending on your BLAS library you
-# might have to make changes below.
+# might have to make changes below
 
 ifeq ($(BLASLIB),blis)
 	FCINCLUDE   += -I$(BLAS_DIR)/include/blis
@@ -48,6 +53,7 @@ else ifeq ($(BLASLIB),mkl)
 	#LDFLAGS     += -L${MKLROOT}/lib/intel64 -lmkl_rt
 	#LDFLAGS     += -lpthread -lm -ldl
 endif
+
 
 # -------- Use OpenMP? May be needed for BLAS -------
 # ifeq ($(BLASLIB),blis-amd)
@@ -67,41 +73,30 @@ endif
 
 # -------- GPTL Timing -------
 # Use General Purpose Timing Library to profile code?
-
 ifeq ($(GPTL_TIMING),1)
-
+	#
 	# Timing library
-
+	#
 	FCINCLUDE += -I$(TIME_DIR)/include
-
-    # Compiler specific
-
+	# Compiler specific
 	FCFLAGS += -DUSE_TIMING
 	LDFLAGS   += -L$(TIME_DIR)/lib -Wl,-rpath=$(TIME_DIR)/lib
 	LIBS      += -lgptl
-
-# Use GPTL together with PAPI hardware instrumentation to measure 
-# computational intensity? Requires that your GPTL was compiled to PAPI 
-# support
-
+# Use GPTL together with PAPI hardware instrumentation to measure computational intensity?
+# Requires that your GPTL was compiled to PAPI support
 else ifeq ($(GPTL_TIMING),2)
-
+	#
 	# Timing library
-
+	#
 	FCINCLUDE += -I$(TIME_DIR)/include
-
 	# Compiler specific
-
 	FCFLAGS += -DUSE_TIMING -DUSE_PAPI
 	LDFLAGS   += -L$(TIME_DIR)/lib -Wl,-rpath=$(TIME_DIR)/lib
-
 	# LIBS      += -lgptl  -rdynamic  -lpapi
-
 	LIBS      += -lgptl -lpapi
-
-    ifeq ($(FC),gfortran)
-    	LIBS      += -rdynamic
-    endif
+ifeq ($(FC),gfortran)
+	LIBS      += -rdynamic  
+endif
 endif
 
 VPATH = ../
