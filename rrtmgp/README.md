@@ -6,6 +6,8 @@ This (sub)repository contains my personal notes on research, and experiments rel
 
 ## Notebooks
 
+Unsorted list
+
 - [ukk23test01-train-v2.ipynb](ukk23test01-train-v2.ipynb) : continuation of `ukk23test01-train-v1.ipynb`, adding more documentation, better organization, complete training, etc.
 
 - [ukk23test01-train-v1.ipynb](ukk23test01-train-v1.ipynb) : generates files containing the neural network (NN) model that is later used in the RTE+RRTMGP-NN model. The implementation uses TensorFlow/Python for training the NN, and Fortran routines are used to generate the training dataset. Based on [[1]](#ref01).
@@ -16,11 +18,13 @@ This (sub)repository contains my personal notes on research, and experiments rel
 
 - [ukk23eo01-gprof.ipynb](ukk23eo01-gprof.ipynb) : gprof of ecrad executable from ukk23eo01 dir (optimized version of ecRad radiation scheme with new RRTMGP-NN gas optics).
 
-- [ecrad-01-sd-v240823.ipynb](ecrad-01-sd-v240823.ipynb) : shows the original ecRad radiation module using conventional numerical method, running on SDumont. (a work in progress)
+- [ecrad-01-sd-v240823.ipynb](ecrad-01-sd-v240823.ipynb) : shows the original ecRad radiation module using conventional numerical method, running on SDumont. {work in progress}
 
-- [ukk23test01-train-sd-v240823.ipynb](ukk23test01-train-sd-v240823.ipynb) : DNN network training for the optical gas radiation problem, running on SDumont. (a work in progress)
+- [ukk23test01-train-sd-v240823.ipynb](ukk23test01-train-sd-v240823.ipynb) : DNN network training for the optical gas radiation problem, running on SDumont. {work in progress}
 
-- [rrtmgp_rfmip_lw.ipynb](rrtmgp_rfmip_lw.ipynb) : Example program to demonstrate the calculation of longwave radiative fluxes in clear, aerosol-free skies. Based on ´rfmip-clear-sky/rrtmgp_rfmip_lw.F90`.
+- [jn_rrtmgp_rfmip_lw.ipynb](rrtmgp_rfmip_lw.ipynb) : Example program to demonstrate the calculation of longwave radiative fluxes in clear, aerosol-free skies. Based on ´rfmip-clear-sky/rrtmgp_rfmip_lw.F90`. {work in progress}
+
+Note: the Table of Contents for each Notebook is automatically generated when opened by JupyterLab by selecting the *View > Table of Contents* menu item, or by pressing Ctrl+Shift-K.
 
 ## Directories
 
@@ -47,6 +51,8 @@ This (sub)repository contains my personal notes on research, and experiments rel
 - `*.txt` and `*.yml` are auxiliary files.
 
 - `*.nc` files are of type NetCDF4 and can be browsed and their structure visualized using the Java tool [ToolsUI](https://docs.unidata.ucar.edu/netcdf-java/current/userguide/reading_cdm.html) or the Python library [netcdf4-python](https://github.com/Unidata/netcdf4-python).
+
+- `env.md` :  briefly describes the installation of the Conda environment used in Notebooks.
 
 ## Code and data
 
@@ -98,7 +104,9 @@ Ukkonen (2020) code and data for the paper [[5]](#ref05). Supplementary Python c
 
 ## Notes
 
-1. From <https://github.com/peterukk/rte-rrtmgp-nn/tree/2.0> : "Instead of the original lookup-table interpolation routine and "eta" parameter to handle the overlapping absorption of gases in a given band, this fork implements neural networks (NNs) to predict optical properties for given atmospheric conditions and gas concentrations, which includes all minor longwave (LW) gases supported by RRTMGP. The NNs predict molecular absorption (LW/SW), scattering (SW) or emission (LW) for all spectral points from an input vector consisting of temperature, pressure and gas concentrations of an atmospheric layer. The models have been trained on 6-7 million samples (LW) spanning a wide range of conditions (pre-industrial, present-day, future...) so that they may be used for both weather and climate applications."
+1. From <https://github.com/peterukk/rte-rrtmgp-nn/tree/2.0> :
+   
+   1. Instead of the original lookup-table interpolation routine and "eta" parameter to handle the overlapping absorption of gases in a given band, this fork implements neural networks (NNs) to predict optical properties for given atmospheric conditions and gas concentrations, which includes all minor longwave (LW) gases supported by RRTMGP. The NNs predict molecular absorption (LW/SW), scattering (SW) or emission (LW) for all spectral points from an input vector consisting of temperature, pressure and gas concentrations of an atmospheric layer. The models have been trained on 6-7 million samples (LW) spanning a wide range of conditions (pre-industrial, present-day, future...) so that they may be used for both weather and climate applications.
 
 2. From <https://zenodo.org/records/7413952> :
    

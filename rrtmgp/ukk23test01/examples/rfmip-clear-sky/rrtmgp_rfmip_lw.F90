@@ -43,9 +43,9 @@ program rrtmgp_rfmip_lw
   !
   ! Modules for working with rte and rrtmgp
   !
-#ifdef USE_OPENMP
-  use omp_lib
-#endif
+        #ifdef USE_OPENMP
+          use omp_lib
+        #endif
   ! Working precision for real variables
   !
   use mo_rte_kind,           only: wp, sp, wl, i4
@@ -88,23 +88,23 @@ program rrtmgp_rfmip_lw
   use mo_simple_netcdf,      only: read_field, get_dim_size
   use netcdf
   use mod_network_rrtmgp
-#ifdef USE_OPENACC  
-  use cublas
-  use openacc     
-#endif
-#ifdef USE_TIMING
-  !
-  ! Timing library
-  !
-  use gptl,                  only: gptlstart, gptlstop, gptlinitialize, gptlpr_file, gptlfinalize, gptlsetoption, &
-                                   gptlpercent, gptloverhead, gptlsetutr
-#endif
+        #ifdef USE_OPENACC  
+          use cublas
+          use openacc     
+        #endif
+        #ifdef USE_TIMING
+          !
+          ! Timing library
+          !
+          use gptl,                  only: gptlstart, gptlstop, gptlinitialize, gptlpr_file, gptlfinalize, gptlsetoption, &
+                                           gptlpercent, gptloverhead, gptlsetutr
+        #endif
 
   implicit none
 
-#ifdef USE_PAPI  
-#include "f90papi.h"
-#endif  
+        #ifdef USE_PAPI  
+        #include "f90papi.h"
+        #endif  
   ! --------------------------------------------------
   !
   ! Local variables
@@ -145,16 +145,16 @@ program rrtmgp_rfmip_lw
   !
   type(ty_gas_concs), dimension(:), allocatable  :: gas_conc_array
 
-  ! Initialize GPU kernel
-#ifdef USE_OPENACC  
-  type(cublasHandle) :: h
-  istat = cublasCreate(h) 
-  istat = cublasSetStream(h, acc_get_cuda_stream(acc_async_sync))
-  ! print *, "1 istat ", istat, "(0=success, 1=not initialized)"
-
-  ! istat = cublasSetMathMode(h, CUBLAS_COMPUTE_32F_FAST_16BF)
-  ! print *, "2 istat ", istat, "(0=success, 1=not initialized)"
-#endif
+          ! Initialize GPU kernel
+        #ifdef USE_OPENACC  
+          type(cublasHandle) :: h
+          istat = cublasCreate(h) 
+          istat = cublasSetStream(h, acc_get_cuda_stream(acc_async_sync))
+          ! print *, "1 istat ", istat, "(0=success, 1=not initialized)"
+        
+          ! istat = cublasSetMathMode(h, CUBLAS_COMPUTE_32F_FAST_16BF)
+          ! print *, "2 istat ", istat, "(0=success, 1=not initialized)"
+        #endif
 
   ! -------------------------------------------------------------------------------------------------
   !
@@ -327,25 +327,26 @@ program rrtmgp_rfmip_lw
   call stop_on_err(optical_props%alloc_1scl(block_size, nlay, k_dist))
   ! --------------------------------------------------
 
-#ifdef USE_TIMING
-  !
-  ! Initialize timers
-  !
-  ret = gptlsetoption (gptlpercent, 1)        ! Turn on "% of" print
-  ret = gptlsetoption (gptloverhead, 0)       ! Turn off overhead estimate
-#ifdef USE_PAPI  
-#ifdef DOUBLE_PRECISION
-  ret = GPTLsetoption (PAPI_DP_OPS, 1);         ! Turn on FLOPS estimate (DP)
-#else
-  ret = GPTLsetoption (PAPI_SP_OPS, 1);         ! Turn on FLOPS estimate (SP)
-#endif
-#endif  
-  ret = gptlinitialize()
-#endif
+      #ifdef USE_TIMING
+        !
+        ! Initialize timers
+        !
+        ret = gptlsetoption (gptlpercent, 1)        ! Turn on "% of" print
+        ret = gptlsetoption (gptloverhead, 0)       ! Turn off overhead estimate
+      #ifdef USE_PAPI  
+      #ifdef DOUBLE_PRECISION
+        ret = GPTLsetoption (PAPI_DP_OPS, 1);         ! Turn on FLOPS estimate (DP)
+      #else
+        ret = GPTLsetoption (PAPI_SP_OPS, 1);         ! Turn on FLOPS estimate (SP)
+      #endif
+      #endif  
+        ret = gptlinitialize()
+      #endif
 
-#ifdef USE_OPENMP
-    print *, "OpenMP processes available:", omp_get_num_procs()
-#endif
+      #ifdef USE_OPENMP
+          print *, "OpenMP processes available:", omp_get_num_procs()
+      #endif
+      
   if (use_rrtmgp_nn) then
     print *, "starting clear-sky LW computations, using neural networks as RRTMGP kernel"
   else
@@ -356,21 +357,22 @@ program rrtmgp_rfmip_lw
   !
   ! Loop over blocks
   !
-#ifdef USE_TIMING
-  ret =  gptlstart('clear_sky_total (LW)')
-!  do i = 1, 32
-#endif
+    #ifdef USE_TIMING
+      ret =  gptlstart('clear_sky_total (LW)')
+    !  do i = 1, 32
+    #endif
 
-#ifdef USE_OPENMP
-  !$OMP PARALLEL  firstprivate(sfc_emis_spec,fluxes,optical_props,source)
-  !$OMP DO 
-#endif
+    #ifdef USE_OPENMP
+      !$OMP PARALLEL  firstprivate(sfc_emis_spec,fluxes,optical_props,source)
+      !$OMP DO 
+    #endif
+    
   do b = 1, nblocks
     
-#ifdef USE_OPENMP
-    ! PRINT *, "Hello from process: ", OMP_GET_THREAD_NUM()
-    ! print *, "my t_lay(5,5,b) for b:",b,"  is", t_lay(5,5,b)
-#endif
+        #ifdef USE_OPENMP
+            ! PRINT *, "Hello from process: ", OMP_GET_THREAD_NUM()
+            ! print *, "my t_lay(5,5,b) for b:",b,"  is", t_lay(5,5,b)
+        #endif
 
     fluxes%flux_up => flux_up(:,:,b)
     fluxes%flux_dn => flux_dn(:,:,b)    
@@ -383,6 +385,7 @@ program rrtmgp_rfmip_lw
     !   (This is partly to show how to keep work on GPUs using OpenACC)
     !
     !$acc parallel loop collapse(2)
+    
     do icol = 1, block_size
       do ibnd = 1, nbnd
         sfc_emis_spec(ibnd,icol) = sfc_emis(icol,b)
@@ -393,9 +396,10 @@ program rrtmgp_rfmip_lw
     ! Compute the optical properties of the atmosphere and the Planck source functions
     !    from pressures, temperatures, and gas concentrations...
     !
-#ifdef USE_TIMING
-    ret =  gptlstart('gas_optics (LW)')
-#endif
+        #ifdef USE_TIMING
+            ret =  gptlstart('gas_optics (LW)')
+        #endif
+        
     if (use_rrtmgp_nn) then
       call stop_on_err(k_dist%gas_optics(p_lay(:,:,b),        &
                                           p_lev(:,:,b),         &
@@ -425,10 +429,10 @@ program rrtmgp_rfmip_lw
 
     call system_clock(iTime2)
 
-#ifdef USE_TIMING
-    ret =  gptlstop('gas_optics (LW)')
-    ret =  gptlstart('rte_lw')
-#endif
+        #ifdef USE_TIMING
+            ret =  gptlstop('gas_optics (LW)')
+            ret =  gptlstart('rte_lw')
+        #endif
     !
     ! ... and compute the spectrally-resolved fluxes, providing reduced values
     !    via ty_fluxes_broadband
@@ -439,25 +443,32 @@ program rrtmgp_rfmip_lw
                             sfc_emis_spec,   &
                             fluxes,          &
                             n_gauss_angles = n_quad_angles, use_2stream = .false.) )
-#ifdef USE_TIMING
-    ret =  gptlstop('rte_lw')
-#endif
+                            
+        #ifdef USE_TIMING
+            ret =  gptlstop('rte_lw')
+        #endif
 
   end do ! blocks
-#ifdef USE_OPENMP
-  !$OMP END DO
-  !$OMP END PARALLEL
-  !$OMP barrier
-#endif
 
-#ifdef USE_TIMING
-  ! end do
-!   End timers
-  ret =  gptlstop('clear_sky_total (LW)')
-  timing_file = "timing.lw-" // adjustl(trim(block_size_char))
-  ret = gptlpr_file(trim(timing_file))
-  ret = gptlfinalize()
-#endif
+
+
+
+
+  
+        #ifdef USE_OPENMP
+          !$OMP END DO
+          !$OMP END PARALLEL
+          !$OMP barrier
+        #endif
+
+        #ifdef USE_TIMING
+          ! end do
+        !   End timers
+          ret =  gptlstop('clear_sky_total (LW)')
+          timing_file = "timing.lw-" // adjustl(trim(block_size_char))
+          ret = gptlpr_file(trim(timing_file))
+          ret = gptlfinalize()
+        #endif
 
 call system_clock(iTime3)
 
@@ -473,6 +484,7 @@ end if
 
   call optical_props%finalize() ! Also deallocates arrays on device
   call        source%finalize() ! Also deallocates arrays on device
+  
   !$acc exit data delete(sfc_emis_spec, sfc_emis)
 
   print *, "-----------------------------------------------------------------------------------------"
