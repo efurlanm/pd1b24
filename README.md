@@ -6,7 +6,7 @@ This repository contains code, data, manuscripts, and other files used in my res
 
 - Data-driven parameter discovery of one-dimensional Burgers' Equation using PINN.
 
-- Evaluation of PIML and other methods applied to the RRTMGP gas optics scheme used in ECMWF's ecRad radiation module.
+- Evaluation of PIML and other methods applied to the RRTMGP gas optics scheme used in ECMWF's ecRad radiation module. (moved to <https://github.com/efurlanm/radnn>)
 
 The acronym PD1B24 originally comes from the first studies entitled *PINN Discovery 1D Burgers 2024*.
 
@@ -16,7 +16,7 @@ Description of some files and subdirectories. More information can be found insi
 
 - [BurgersPINN](BurgersPINN) - case study of application of PINN in solving the Burgers' Equation .
 
-- [rrtmgp](rrtmgp) - case study of application of the PIML method in the RRTMGP gas optics scheme.
+- rrtmgp - case study of application of the PIML method in the RRTMGP gas optics scheme. (moved to <https://github.com/efurlanm/radnn>)
 
 - [manuscript-1](manuscript-1) - Qualification Exam LaTeX sources.
 
