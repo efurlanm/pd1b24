@@ -1,8 +1,10 @@
 # Evaluation of the application of PIML and PINN methods
 
-*Last edited: 2024-11-17*
+*Last edited: 2024-11-21*
 
-This repository contains code, data, manuscripts, and other files used in my research on PIML (Physics-Informed Machine Learning) and PINN (Physics-Informed Neural Network) methods. Some case studies:
+This repository contains code, data, manuscripts, and other files used in my research on Physics-Informed Machine Learning (PIML) and Physics-Informed Neural Network (PINN) methods, which were used in the Qualifying Exams and Proposal. The research compared the accuracy and processing time of PINN and a standard numerical method (SINDy) on the inverse and forward problems for the 1D Burgers' problem, analyzed the impact of dataset size and hyperparameters on PINN performance, and generated a proposal for a study of the use of PIML in the radiation module of an atmospheric model.
+
+Some case studies:
 
 - Data-driven parameter discovery of one-dimensional Burgers' Equation using PINN.
 
